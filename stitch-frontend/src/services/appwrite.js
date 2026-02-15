@@ -14,36 +14,71 @@ export const storage = new Storage(client)
 
 export { client, ID, Query, DATABASE_ID }
 
+const DEMO_MODE = true
+
 export async function loginUser(email, password) {
+  console.log('🔐 Appwrite: Attempting login for:', email)
+  
+  if (DEMO_MODE) {
+    console.log('📝 Demo mode: Simulating login')
+    return { $id: 'demo-user', email, name: 'Demo User' }
+  }
+  
   try {
-    await account.createEmailSession(email, password)
-    return await account.get()
+    const session = await account.createEmailSession(email, password)
+    console.log('✅ Appwrite: Session created', session.$id)
+    const user = await account.get()
+    console.log('✅ Appwrite: User logged in', user)
+    return user
   } catch (error) {
-    console.error('Login error:', error)
+    console.error('❌ Appwrite Login failed:', error.message)
     throw error
   }
 }
 
 export async function registerUser(email, password, name) {
+  console.log('🔐 Appwrite: Attempting registration for:', email)
+  
+  if (DEMO_MODE) {
+    console.log('📝 Demo mode: Simulating registration')
+    return { $id: 'demo-user-' + Date.now(), email, name }
+  }
+  
   try {
     await account.create(ID.unique(), email, password, name)
-    await account.createEmailSession(email, password)
-    return await account.get()
+    console.log('✅ Appwrite: User created')
+    const session = await account.createEmailSession(email, password)
+    console.log('✅ Appwrite: Session created after registration')
+    const user = await account.get()
+    console.log('✅ Appwrite: User registered and logged in', user)
+    return user
   } catch (error) {
-    console.error('Register error:', error)
+    console.error('❌ Appwrite Registration failed:', error.message)
     throw error
   }
 }
 
 export async function logoutUser() {
+  console.log('🔐 Appwrite: Logging out')
+  
+  if (DEMO_MODE) {
+    console.log('📝 Demo mode: Simulating logout')
+    return
+  }
+  
   try {
     await account.deleteSession('current')
+    console.log('✅ Appwrite: Logged out')
   } catch (error) {
-    console.error('Logout error:', error)
+    console.error('❌ Appwrite Logout failed:', error.message)
   }
 }
 
 export async function getCurrentUser() {
+  if (DEMO_MODE) {
+    return null
+  }
+  
   try {
     return await account.get()
   } catch {
@@ -71,10 +106,19 @@ export async function getProduct(id) {
 }
 
 export async function createOrder(orderData) {
+  console.log('📦 Appwrite: Creating order:', orderData)
+  
+  if (DEMO_MODE) {
+    console.log('📝 Demo mode: Simulating order creation')
+    return { $id: 'demo-order-' + Date.now(), ...orderData }
+  }
+  
   try {
-    return await databases.createDocument(DATABASE_ID, 'orders', ID.unique(), orderData)
+    const order = await databases.createDocument(DATABASE_ID, 'orders', ID.unique(), orderData)
+    console.log('✅ Appwrite: Order created', order.$id)
+    return order
   } catch (error) {
-    console.error('Create order error:', error)
+    console.error('❌ Appwrite Order creation failed:', error.message)
     throw error
   }
 }
