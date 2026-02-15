@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom'
+import { useCart } from '../context/CartContext'
+import { useState } from 'react'
 
-const products = [
+export const products = [
   {
     id: 1,
     name: 'Rustic Clay Mug',
@@ -51,6 +53,15 @@ const collections = [
 ]
 
 export default function Home() {
+  const { addToCart, cartCount } = useCart()
+  const [addedToast, setAddedToast] = useState(null)
+
+  const handleAddToCart = (product) => {
+    addToCart(product)
+    setAddedToast(product.id)
+    setTimeout(() => setAddedToast(null), 2000)
+  }
+
   return (
     <div className="min-h-screen bg-background-light dark:bg-background-dark">
       <header className="sticky top-0 z-50 bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-md border-b border-neutral-light dark:border-neutral-dark">
@@ -77,7 +88,7 @@ export default function Home() {
                 </Link>
                 <Link to="/cart" className="relative flex items-center justify-center size-10 rounded-full hover:bg-neutral-light dark:hover:bg-neutral-dark text-text-main dark:text-white transition-colors group">
                   <span className="material-symbols-outlined">shopping_bag</span>
-                  <span className="absolute top-1 right-1 flex h-4 w-4 items-center justify-center rounded-full bg-primary text-[10px] font-bold text-white group-hover:scale-110 transition-transform">2</span>
+                  {cartCount > 0 && <span className="absolute top-1 right-1 flex h-4 w-4 items-center justify-center rounded-full bg-primary text-[10px] font-bold text-white group-hover:scale-110 transition-transform">{cartCount}</span>}
                 </Link>
               </div>
             </div>
@@ -164,22 +175,30 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-x-4 gap-y-8 md:gap-x-6 md:gap-y-10">
             {products.map((product) => (
-              <Link key={product.id} to={`/products/${product.id}`} className="group flex flex-col gap-3">
+              <div key={product.id} className="group flex flex-col gap-3">
                 <div className="relative aspect-square overflow-hidden rounded-lg bg-gray-100 dark:bg-[#3a2a20]">
-                  <img alt={product.name} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" src={product.image} />
-                  <button className="absolute bottom-3 right-3 flex size-8 items-center justify-center rounded-full bg-white text-text-main shadow-md opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 hover:bg-primary hover:text-white">
+                  <Link to={`/products/${product.id}`}>
+                    <img alt={product.name} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" src={product.image} />
+                  </Link>
+                  <button 
+                    onClick={(e) => { e.preventDefault(); handleAddToCart(product); }}
+                    className="absolute bottom-3 right-3 flex size-8 items-center justify-center rounded-full bg-white text-text-main shadow-md opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 hover:bg-primary hover:text-white"
+                  >
                     <span className="material-symbols-outlined text-[18px]">add</span>
                   </button>
                   {product.isNew && <span className="absolute top-3 left-3 bg-white/90 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-text-main rounded-sm">New</span>}
+                  {addedToast === product.id && (
+                    <span className="absolute top-3 right-3 bg-green-500 text-white text-xs font-bold px-2 py-1 rounded">Added!</span>
+                  )}
                 </div>
                 <div className="flex flex-col gap-1">
                   <div className="flex justify-between items-start">
-                    <h3 className="text-base font-bold text-text-main dark:text-white leading-tight group-hover:text-primary transition-colors">{product.name}</h3>
+                    <Link to={`/products/${product.id}`} className="text-base font-bold text-text-main dark:text-white leading-tight group-hover:text-primary transition-colors">{product.name}</Link>
                     <p className="text-sm font-bold text-primary">${product.price}.00</p>
                   </div>
                   <p className="text-xs text-text-muted dark:text-gray-400">By {product.artisan}</p>
                 </div>
-              </Link>
+              </div>
             ))}
           </div>
         </section>
@@ -192,9 +211,9 @@ export default function Home() {
               <h3 className="text-2xl font-bold text-text-main dark:text-white">Join our community</h3>
               <p className="text-text-muted dark:text-gray-400">Subscribe for stories from our artisans and early access to new collections.</p>
             </div>
-            <form className="flex w-full md:w-auto flex-1 max-w-md gap-3">
+            <form className="flex w-full md:w-auto flex-1 max-w-md gap-3" onSubmit={(e) => e.preventDefault()}>
               <input className="flex-1 rounded-lg border-none bg-white dark:bg-[#3a2a20] px-4 py-3 text-sm text-text-main focus:ring-2 focus:ring-primary dark:text-white shadow-sm" placeholder="Enter your email" type="email" />
-              <button className="bg-primary text-white font-bold rounded-lg px-6 py-3 hover:bg-primary/90 transition-colors shadow-sm" type="button">Subscribe</button>
+              <button className="bg-primary text-white font-bold rounded-lg px-6 py-3 hover:bg-primary/90 transition-colors shadow-sm" type="submit">Subscribe</button>
             </form>
           </div>
         </div>
