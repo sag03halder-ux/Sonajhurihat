@@ -1,8 +1,8 @@
 import { Client, Databases, Account, Storage, ID, Query } from 'appwrite'
 
-const PROJECT_ID = 'stitch-demo'
-const DATABASE_ID = 'stitch-db'
-const ENDPOINT = 'https://cloud.appwrite.io/v1'
+const PROJECT_ID = import.meta.env.VITE_APPWRITE_PROJECT_ID
+const DATABASE_ID = import.meta.env.VITE_APPWRITE_DATABASE_ID
+const ENDPOINT = import.meta.env.VITE_APPWRITE_ENDPOINT
 
 const client = new Client()
   .setEndpoint(ENDPOINT)
@@ -14,16 +14,16 @@ export const storage = new Storage(client)
 
 export { client, ID, Query, DATABASE_ID }
 
-const DEMO_MODE = true
+const DEMO_MODE = false
 
 export async function loginUser(email, password) {
   console.log('🔐 Appwrite: Attempting login for:', email)
-  
+
   if (DEMO_MODE) {
     console.log('📝 Demo mode: Simulating login')
     return { $id: 'demo-user', email, name: 'Demo User' }
   }
-  
+
   try {
     const session = await account.createEmailSession(email, password)
     console.log('✅ Appwrite: Session created', session.$id)
@@ -38,12 +38,12 @@ export async function loginUser(email, password) {
 
 export async function registerUser(email, password, name) {
   console.log('🔐 Appwrite: Attempting registration for:', email)
-  
+
   if (DEMO_MODE) {
     console.log('📝 Demo mode: Simulating registration')
     return { $id: 'demo-user-' + Date.now(), email, name }
   }
-  
+
   try {
     await account.create(ID.unique(), email, password, name)
     console.log('✅ Appwrite: User created')
@@ -60,12 +60,12 @@ export async function registerUser(email, password, name) {
 
 export async function logoutUser() {
   console.log('🔐 Appwrite: Logging out')
-  
+
   if (DEMO_MODE) {
     console.log('📝 Demo mode: Simulating logout')
     return
   }
-  
+
   try {
     await account.deleteSession('current')
     console.log('✅ Appwrite: Logged out')
@@ -78,7 +78,7 @@ export async function getCurrentUser() {
   if (DEMO_MODE) {
     return null
   }
-  
+
   try {
     return await account.get()
   } catch {
@@ -107,12 +107,12 @@ export async function getProduct(id) {
 
 export async function createOrder(orderData) {
   console.log('📦 Appwrite: Creating order:', orderData)
-  
+
   if (DEMO_MODE) {
     console.log('📝 Demo mode: Simulating order creation')
     return { $id: 'demo-order-' + Date.now(), ...orderData }
   }
-  
+
   try {
     const order = await databases.createDocument(DATABASE_ID, 'orders', ID.unique(), orderData)
     console.log('✅ Appwrite: Order created', order.$id)

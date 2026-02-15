@@ -4,7 +4,7 @@ import { loginUser, registerUser } from '../services/appwrite'
 
 export default function Login() {
   const navigate = useNavigate()
-  const [isLogin, setIsLogin] = useState(true)
+
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
   const [formData, setFormData] = useState({
@@ -17,23 +17,35 @@ export default function Login() {
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
-  const handleSubmit = async (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault()
     setError('')
     setLoading(true)
 
     try {
-      if (isLogin) {
-        await loginUser(formData.email, formData.password)
-        console.log('Logged in via Appwrite')
-      } else {
-        await registerUser(formData.email, formData.password, formData.name)
-        console.log('Registered via Appwrite')
-      }
+      await loginUser(formData.email, formData.password)
+      console.log('Logged in via Appwrite')
       navigate('/dashboard')
     } catch (err) {
       console.error('Auth error:', err)
       setError(err.message || 'Authentication failed')
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const handleRegister = async (e) => {
+    e.preventDefault()
+    setError('')
+    setLoading(true)
+
+    try {
+      await registerUser(formData.email, formData.password, formData.name)
+      console.log('Registered via Appwrite')
+      navigate('/dashboard')
+    } catch (err) {
+      console.error('Auth error:', err)
+      setError(err.message || 'Registration failed')
     } finally {
       setLoading(false)
     }
@@ -66,7 +78,7 @@ export default function Login() {
           <div className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-white dark:bg-slate-900 rounded-full items-center justify-center z-10 shadow-lg border border-slate-100 dark:border-slate-800">
             <span className="text-slate-400 text-xs font-semibold">OR</span>
           </div>
-          
+
           <div className="w-full md:w-1/2 p-8 md:p-12 lg:p-16 border-b md:border-b-0 md:border-r border-slate-100 dark:border-slate-800 relative group">
             <div className="absolute top-0 left-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
             <div className="relative z-10 h-full flex flex-col justify-center">
@@ -74,15 +86,15 @@ export default function Login() {
                 <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-2">Welcome Back</h2>
                 <p className="text-slate-500 dark:text-slate-400">Sign in to access your saved items and order history.</p>
               </div>
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form onSubmit={handleLogin} className="space-y-6">
                 <div>
                   <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Email Address</label>
                   <div className="relative">
                     <span className="material-symbols-outlined absolute left-3 top-3 text-slate-400 text-xl">mail</span>
-                    <input 
-                      className="w-full pl-10 pr-4 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none text-slate-900 dark:text-white" 
-                      placeholder="you@example.com" 
-                      type="email" 
+                    <input
+                      className="w-full pl-10 pr-4 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none text-slate-900 dark:text-white"
+                      placeholder="you@example.com"
+                      type="email"
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
@@ -97,10 +109,10 @@ export default function Login() {
                   </div>
                   <div className="relative">
                     <span className="material-symbols-outlined absolute left-3 top-3 text-slate-400 text-xl">lock</span>
-                    <input 
-                      className="w-full pl-10 pr-4 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none text-slate-900 dark:text-white" 
-                      placeholder="••••••••" 
-                      type="password" 
+                    <input
+                      className="w-full pl-10 pr-4 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none text-slate-900 dark:text-white"
+                      placeholder="••••••••"
+                      type="password"
                       name="password"
                       value={formData.password}
                       onChange={handleChange}
@@ -108,15 +120,15 @@ export default function Login() {
                     />
                   </div>
                 </div>
-                
+
                 {error && (
                   <div className="p-3 bg-red-50 border border-red-200 rounded-lg text-red-600 text-sm">
                     {error}
                   </div>
                 )}
-                
-                <button 
-                  type="submit" 
+
+                <button
+                  type="submit"
                   disabled={loading}
                   className="w-full bg-primary hover:bg-orange-600 disabled:bg-gray-400 text-white font-semibold py-3 px-4 rounded-lg shadow-md transition-all flex justify-center items-center gap-2"
                 >
@@ -143,22 +155,22 @@ export default function Login() {
               </div>
             </div>
           </div>
-          
+
           <div className="w-full md:w-1/2 p-8 md:p-12 lg:p-16 bg-slate-50 dark:bg-slate-800/50 relative overflow-hidden">
-            <div className="absolute inset-0 opacity-10 pointer-events-none bg-cover bg-center" style={{backgroundImage: 'url(https://lh3.googleusercontent.com/aida-public/AB6AXuBpUNfj1Ftr6aSDdOOiq4F3Pngzz0zCE84W3OXk5oal1fpgBeiyLFu2Hp_qw_aWmfY-Iur78PAP8HpWRBkQUiaa5Ux2DNI-lHHX1LMQi251-SacMSjx1VG65Cj3tNzn1Usu3VAryJP9xMElFtkVgoqd4T5GmFN2hPPcd0EdXm0RhwlhYMDpP1AxosvmYDKRkZrvq58dwvhMvwMi9bbhgVbVf-41TL5MzfustmbLTdJqSlWWs5GZl1t9OORVTDBIu0hLES4cGtEOBRW5)'}}></div>
+            <div className="absolute inset-0 opacity-10 pointer-events-none bg-cover bg-center" style={{ backgroundImage: 'url(https://lh3.googleusercontent.com/aida-public/AB6AXuBpUNfj1Ftr6aSDdOOiq4F3Pngzz0zCE84W3OXk5oal1fpgBeiyLFu2Hp_qw_aWmfY-Iur78PAP8HpWRBkQUiaa5Ux2DNI-lHHX1LMQi251-SacMSjx1VG65Cj3tNzn1Usu3VAryJP9xMElFtkVgoqd4T5GmFN2hPPcd0EdXm0RhwlhYMDpP1AxosvmYDKRkZrvq58dwvhMvwMi9bbhgVbVf-41TL5MzfustmbLTdJqSlWWs5GZl1t9OORVTDBIu0hLES4cGtEOBRW5)' }}></div>
             <div className="relative z-10 h-full flex flex-col justify-center">
               <div className="mb-8">
                 <span className="inline-block py-1 px-3 rounded-full bg-primary/10 text-primary text-xs font-semibold mb-4 tracking-wide uppercase">New Customer?</span>
                 <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-2">Join our Community</h2>
                 <p className="text-slate-500 dark:text-slate-400">Create an account to track orders and discover unique handcrafted items.</p>
               </div>
-              <form onSubmit={handleSubmit} className="space-y-5">
+              <form onSubmit={handleRegister} className="space-y-5">
                 <div>
                   <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Name</label>
-                  <input 
-                    className="w-full px-4 py-3 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-primary text-slate-900 dark:text-white" 
-                    placeholder="Your Name" 
-                    type="text" 
+                  <input
+                    className="w-full px-4 py-3 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-primary text-slate-900 dark:text-white"
+                    placeholder="Your Name"
+                    type="text"
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
@@ -166,10 +178,10 @@ export default function Login() {
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Email Address</label>
-                  <input 
-                    className="w-full px-4 py-3 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-primary text-slate-900 dark:text-white" 
-                    placeholder="you@example.com" 
-                    type="email" 
+                  <input
+                    className="w-full px-4 py-3 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-primary text-slate-900 dark:text-white"
+                    placeholder="you@example.com"
+                    type="email"
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
@@ -178,18 +190,18 @@ export default function Login() {
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Password</label>
-                  <input 
-                    className="w-full px-4 py-3 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-primary text-slate-900 dark:text-white" 
-                    placeholder="Min. 8 characters" 
-                    type="password" 
+                  <input
+                    className="w-full px-4 py-3 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-primary text-slate-900 dark:text-white"
+                    placeholder="Min. 8 characters"
+                    type="password"
                     name="password"
                     value={formData.password}
                     onChange={handleChange}
                     required
                   />
                 </div>
-                <button 
-                  type="submit" 
+                <button
+                  type="submit"
                   disabled={loading}
                   className="w-full bg-slate-900 dark:bg-white hover:bg-slate-800 dark:hover:bg-slate-200 text-white dark:text-slate-900 font-semibold py-3 px-4 rounded-lg shadow-md transition-all disabled:opacity-50"
                 >
