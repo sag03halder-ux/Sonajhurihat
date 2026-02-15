@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Vendor Support and Refunds</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                        "surface-dark": "#161e2e",
+                        "surface-darker": "#131a29",
+                    },
+                    fontFamily: {
+                        "display": ["Work Sans", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar for webkit browsers */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #101622; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2d3748; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #4a5568; 
+        }
+        .chat-scroll {
+            scrollbar-width: thin;
+            scrollbar-color: #2d3748 #101622;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-800 dark:text-slate-200 font-display antialiased h-screen overflow-hidden flex flex-col">
+<!-- Top Navigation / Header -->
+<header class="bg-white dark:bg-surface-dark border-b border-slate-200 dark:border-slate-800 h-16 flex items-center justify-between px-6 shrink-0 z-20">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center text-primary">
+<span class="material-icons">handyman</span>
+</div>
+<h1 class="text-xl font-bold tracking-tight">Artisan Support</h1>
+<span class="px-2.5 py-0.5 rounded-full bg-green-500/10 text-green-600 dark:text-green-400 text-xs font-semibold border border-green-500/20">Online</span>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden md:flex items-center gap-4 text-sm text-slate-500 dark:text-slate-400">
+<div class="flex flex-col items-end">
+<span class="font-semibold text-slate-800 dark:text-white">Elena Woods</span>
+<span class="text-xs">Ceramics &amp; Clay</span>
+</div>
+<img class="w-10 h-10 rounded-full border-2 border-slate-200 dark:border-slate-700 object-cover" data-alt="Profile picture of vendor Elena Woods" src="https://lh3.googleusercontent.com/aida-public/AB6AXuALezJ547HQkqtDl1JiFTJvRehf550XB8KV3q3r5032DrA3g9vvwLDpceG2z9Iva3O22KQ5AWNQdW7do01umALygrRW1O-NLXbxj3xe-_FDoCwaeaREyf-prEsH8IAGprdLxeLFhsIihidNWD0pC-hMWgm-Yah_DerUnhLyp5Auc2ZMXDXzCB0b0ZatSMzaIMAn4fNumR8Qw6H0jBBYvkQiJf01wYUNG7f6sPJ9PJIS7ZDpp0AThENVOvcIDeZH5mObr-DBCLPsp_IQ"/>
+</div>
+<button class="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500 dark:text-slate-400 transition-colors">
+<span class="material-icons">notifications_none</span>
+</button>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-1 flex overflow-hidden">
+<!-- Left Sidebar: Ticket List -->
+<aside class="w-full md:w-96 flex flex-col border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-surface-dark shrink-0">
+<!-- Toolbar -->
+<div class="p-4 border-b border-slate-200 dark:border-slate-800 space-y-4">
+<div class="relative">
+<span class="material-icons absolute left-3 top-2.5 text-slate-400 text-xl">search</span>
+<input class="w-full bg-slate-100 dark:bg-background-dark border-transparent focus:border-primary focus:ring-0 rounded-lg pl-10 pr-4 py-2 text-sm placeholder-slate-500 dark:text-white transition-all" placeholder="Search tickets, orders..." type="text"/>
+</div>
+<div class="flex gap-2 overflow-x-auto pb-1 no-scrollbar">
+<button class="px-3 py-1.5 rounded-full bg-primary text-white text-xs font-medium whitespace-nowrap">All Open</button>
+<button class="px-3 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 text-xs font-medium border border-transparent dark:border-slate-700 whitespace-nowrap transition-colors">Refunds</button>
+<button class="px-3 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 text-xs font-medium border border-transparent dark:border-slate-700 whitespace-nowrap transition-colors">High Priority</button>
+</div>
+</div>
+<!-- Ticket List Items -->
+<div class="flex-1 overflow-y-auto chat-scroll">
+<!-- Active Ticket Item -->
+<div class="group relative cursor-pointer border-l-4 border-primary bg-primary/5 dark:bg-primary/10 p-4 transition-colors">
+<div class="flex justify-between items-start mb-1">
+<div class="flex items-center gap-2">
+<span class="font-semibold text-slate-900 dark:text-white">Sarah Jenkins</span>
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+</div>
+<span class="text-xs text-slate-500 dark:text-slate-400">2m ago</span>
+</div>
+<h3 class="text-sm font-medium text-slate-800 dark:text-slate-200 mb-1">Refund Req: Broken Ceramic Vase</h3>
+<p class="text-xs text-slate-500 dark:text-slate-400 line-clamp-2">Hi, I just received the package and unfortunately the handle is completely shattered...</p>
+<div class="mt-3 flex items-center gap-2">
+<span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-red-500/10 text-red-600 dark:text-red-400 border border-red-500/20">High</span>
+<span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-300 border border-slate-300 dark:border-slate-600">Order #12345</span>
+</div>
+</div>
+<!-- Inactive Ticket Item 1 -->
+<div class="group relative cursor-pointer border-l-4 border-transparent hover:bg-slate-50 dark:hover:bg-surface-darker p-4 transition-colors border-b border-slate-100 dark:border-slate-800/50">
+<div class="flex justify-between items-start mb-1">
+<div class="flex items-center gap-2">
+<span class="font-semibold text-slate-700 dark:text-slate-300">Michael Chen</span>
+</div>
+<span class="text-xs text-slate-400">1h ago</span>
+</div>
+<h3 class="text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Shipping Inquiry: Wool Scarf</h3>
+<p class="text-xs text-slate-500 dark:text-slate-400 line-clamp-2">Can you confirm if this will arrive before next Friday? It's a gift for...</p>
+<div class="mt-3 flex items-center gap-2">
+<span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20">Low</span>
+<span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-300 border border-slate-300 dark:border-slate-600">Order #12342</span>
+</div>
+</div>
+<!-- Inactive Ticket Item 2 -->
+<div class="group relative cursor-pointer border-l-4 border-transparent hover:bg-slate-50 dark:hover:bg-surface-darker p-4 transition-colors border-b border-slate-100 dark:border-slate-800/50">
+<div class="flex justify-between items-start mb-1">
+<div class="flex items-center gap-2">
+<span class="font-semibold text-slate-700 dark:text-slate-300">Emma Watson</span>
+</div>
+<span class="text-xs text-slate-400">Yesterday</span>
+</div>
+<h3 class="text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Custom Order Question</h3>
+<p class="text-xs text-slate-500 dark:text-slate-400 line-clamp-2">I love the blue glaze! Is it possible to get a set of 4 plates in that...</p>
+<div class="mt-3 flex items-center gap-2">
+<span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20">Medium</span>
+<span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-300 border border-slate-300 dark:border-slate-600">Pre-Sale</span>
+</div>
+</div>
+<!-- Inactive Ticket Item 3 -->
+<div class="group relative cursor-pointer border-l-4 border-transparent hover:bg-slate-50 dark:hover:bg-surface-darker p-4 transition-colors border-b border-slate-100 dark:border-slate-800/50">
+<div class="flex justify-between items-start mb-1">
+<div class="flex items-center gap-2">
+<span class="font-semibold text-slate-700 dark:text-slate-300">Liam O'Connor</span>
+</div>
+<span class="text-xs text-slate-400">2 Days ago</span>
+</div>
+<h3 class="text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Return: Wooden Bowl Set</h3>
+<p class="text-xs text-slate-500 dark:text-slate-400 line-clamp-2">The size is smaller than I expected from the pictures. I'd like to return...</p>
+<div class="mt-3 flex items-center gap-2">
+<span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-slate-500/10 text-slate-600 dark:text-slate-400 border border-slate-500/20">Low</span>
+<span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-300 border border-slate-300 dark:border-slate-600">Order #12330</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- Right Pane: Active Conversation & Actions -->
+<section class="flex-1 flex flex-col h-full bg-slate-50 dark:bg-background-dark relative">
+<!-- Ticket Detail Header -->
+<div class="bg-white dark:bg-surface-dark border-b border-slate-200 dark:border-slate-800 p-4 lg:p-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 shadow-sm z-10">
+<div class="flex gap-4 items-start">
+<img class="w-16 h-16 rounded-lg object-cover border border-slate-200 dark:border-slate-700 shadow-sm" data-alt="Thumbnail of the broken ceramic vase product" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAnma4wjhTr4fOxhnBtkMtzZBMEPwbKkbkj9ABrjl7pgY-x9UXl2T8PKUnunz2ySUvGlVdL_vkeD3YFwXnLC7vq5Jllraq-VJiUV40Shfwo6arOX6WAbBFehUjaQ1FVMDhJlrxUz0yB_qOWvgaVGjfmI0mEyEIAzAr9pd9W8PR6ujq1At0hgl16DAIm-Y8T7gP8NIFyvoUeTrERGHOEx_NjZYgQGuRtDtmNwOehwBtwvY2xmCv6qckRpW5cT5nu4J-U676anbAEO84m"/>
+<div>
+<div class="flex items-center gap-2 mb-1">
+<h2 class="text-lg font-bold text-slate-900 dark:text-white">Order #12345</h2>
+<span class="px-2 py-0.5 rounded text-xs font-medium bg-red-100 text-red-700 dark:bg-red-500/20 dark:text-red-400">Damaged Item</span>
+</div>
+<div class="text-sm text-slate-500 dark:text-slate-400 flex flex-wrap gap-x-4">
+<span class="flex items-center gap-1"><span class="material-icons text-base">person</span> Sarah Jenkins</span>
+<span class="flex items-center gap-1"><span class="material-icons text-base">calendar_today</span> Oct 24, 2023</span>
+<span class="flex items-center gap-1"><span class="material-icons text-base">payments</span> Total: $45.00</span>
+</div>
+</div>
+</div>
+<div class="flex gap-3">
+<!-- Action Panel Buttons -->
+<button class="flex items-center gap-2 px-4 py-2 rounded-lg border border-red-200 dark:border-red-900/30 bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 text-sm font-medium hover:bg-red-100 dark:hover:bg-red-900/30 transition-colors">
+<span class="material-icons text-lg">monetization_on</span>
+                        Issue Refund
+                    </button>
+<button class="flex items-center gap-2 px-4 py-2 rounded-lg bg-white dark:bg-surface-darker border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 text-sm font-medium hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+<span class="material-icons text-lg">check_circle</span>
+                        Close Ticket
+                    </button>
+</div>
+</div>
+<!-- Chat Area -->
+<div class="flex-1 overflow-y-auto p-6 space-y-6 chat-scroll bg-slate-50 dark:bg-[#0b1019]">
+<!-- Date Divider -->
+<div class="flex items-center justify-center">
+<span class="px-3 py-1 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs font-medium">Today, 10:23 AM</span>
+</div>
+<!-- Customer Message -->
+<div class="flex gap-4">
+<div class="flex-shrink-0">
+<div class="w-10 h-10 rounded-full bg-purple-500/20 text-purple-600 dark:text-purple-400 flex items-center justify-center font-bold text-sm">SJ</div>
+</div>
+<div class="max-w-2xl">
+<div class="flex items-baseline gap-2 mb-1">
+<span class="font-semibold text-slate-900 dark:text-slate-200 text-sm">Sarah Jenkins</span>
+<span class="text-xs text-slate-500">10:23 AM</span>
+</div>
+<div class="bg-white dark:bg-surface-dark border border-slate-200 dark:border-slate-800 rounded-r-xl rounded-bl-xl p-4 shadow-sm text-slate-700 dark:text-slate-300 text-sm leading-relaxed">
+<p class="mb-3">Hi, I just received the package and unfortunately the handle of the vase is completely shattered. I was really looking forward to this piece. The box looked a bit crushed on one corner when it arrived.</p>
+<p class="mb-4">I've attached a photo below. What can be done about this? I'd prefer a replacement if possible, otherwise a refund.</p>
+<!-- Attachment -->
+<div class="relative group w-48 h-32 rounded-lg overflow-hidden border border-slate-200 dark:border-slate-700">
+<img class="w-full h-full object-cover" data-alt="Customer photo showing broken ceramic vase handle" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBw5dPWu4U-_VFlYhr1uv1qETNrDOW4BhRI4efA1M4K_vexWTPR69GvFfOoa7qeDKpX73e03_KB6gku7SDM1L4jXsjtyAnvR1pUkVftSeqlkxJEd0hJHbpEiB5gw-_18OVkYHFC5VEdKgyHUvOkkGbEU9GvrrTIIgRRXuQ5ZsBWVBKH3vXrCePmXgBlh2AY_hK16eK-KmlhYXu0idOtLfSl1BkMPopFdX1AwGvDpwW-5yZ4UL_dRvAQ91-8YMnNf01krBeDU4LzPY95"/>
+<div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+<span class="material-icons text-white cursor-pointer">visibility</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Vendor Reply (Draft/Suggestion area - implied active state) -->
+<!-- No messages yet from vendor, so we just show the input area next -->
+</div>
+<!-- Reply Input Area -->
+<div class="bg-white dark:bg-surface-dark border-t border-slate-200 dark:border-slate-800 p-4 lg:px-6 lg:py-4">
+<div class="flex flex-col gap-3">
+<!-- Quick Actions / Formatting Toolbar -->
+<div class="flex items-center gap-2">
+<span class="text-xs font-medium text-slate-400 uppercase tracking-wider mr-2">Quick Replies:</span>
+<button class="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 text-xs border border-transparent dark:border-slate-700 transition-colors">Apology &amp; Refund</button>
+<button class="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 text-xs border border-transparent dark:border-slate-700 transition-colors">Ask for more info</button>
+<button class="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 text-xs border border-transparent dark:border-slate-700 transition-colors">Shipping Update</button>
+</div>
+<!-- Text Area Container -->
+<div class="relative rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-surface-darker focus-within:ring-2 focus-within:ring-primary focus-within:border-transparent transition-all shadow-sm">
+<div class="px-2 py-2 border-b border-slate-200 dark:border-slate-800 flex items-center gap-1 text-slate-500 dark:text-slate-400">
+<button class="p-1.5 rounded hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors" title="Bold"><span class="material-icons text-lg">format_bold</span></button>
+<button class="p-1.5 rounded hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors" title="Italic"><span class="material-icons text-lg">format_italic</span></button>
+<div class="w-px h-4 bg-slate-300 dark:bg-slate-700 mx-1"></div>
+<button class="p-1.5 rounded hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors" title="Attach Image"><span class="material-icons text-lg">image</span></button>
+<button class="p-1.5 rounded hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors" title="Attach File"><span class="material-icons text-lg">attach_file</span></button>
+</div>
+<textarea class="w-full bg-transparent border-0 focus:ring-0 p-3 text-sm text-slate-800 dark:text-slate-200 placeholder-slate-400 resize-none" placeholder="Type your reply here..." rows="3"></textarea>
+</div>
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-2">
+<label class="inline-flex items-center cursor-pointer">
+<input checked="" class="form-checkbox rounded bg-slate-200 dark:bg-slate-800 border-transparent text-primary focus:ring-primary/50" type="checkbox"/>
+<span class="ml-2 text-xs text-slate-500 dark:text-slate-400">Send copy to email</span>
+</label>
+</div>
+<button class="px-6 py-2.5 bg-primary hover:bg-primary/90 text-white rounded-lg font-medium text-sm shadow-lg shadow-primary/25 flex items-center gap-2 transition-all transform active:scale-95">
+<span>Send Reply</span>
+<span class="material-icons text-sm">send</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Refund Modal Overlay (Hidden by default, shown for demonstration as part of the page structure, simulating "open" state) -->
+<!-- Ideally this would be controlled by JS, but visually representing it as a potential state -->
+<!-- 
+    <div class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center opacity-0 pointer-events-none">
+        ... modal content ...
+    </div>
+    -->
+</body></html>

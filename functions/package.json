@@ -1,0 +1,14 @@
+{
+  "name": "appwrite-functions",
+  "version": "1.0.0",
+  "description": "Appwrite cloud functions for Stitch e-commerce platform",
+  "main": "index.js",
+  "scripts": {
+    "deploy": "appwrite deploy function",
+    "create": "appwrite create function"
+  },
+  "dependencies": {
+    "node-appwrite": "^8.0.0",
+    "stripe": "^14.0.0"
+  }
+}

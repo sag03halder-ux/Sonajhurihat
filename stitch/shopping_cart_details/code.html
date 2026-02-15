@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Shopping Cart Details - Handicraft E-commerce</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Icons -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ec6d13",
+                        "primary-light": "#fbdcc9", /* Derived lighter shade for backgrounds */
+                        "primary-dark": "#b8530b", /* Derived darker shade for hover */
+                        "background-light": "#f8f7f6",
+                        "background-dark": "#221810",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#2d2016",
+                        "neutral-50": "#fbf8f5",
+                        "neutral-100": "#f5f0ec",
+                        "neutral-200": "#ede4dd",
+                        "neutral-300": "#dbcbbd",
+                        "neutral-400": "#bfab9b",
+                        "neutral-500": "#9e8876",
+                        "neutral-600": "#856d5c",
+                        "neutral-700": "#6b5446",
+                        "neutral-800": "#523f35",
+                        "neutral-900": "#3d2e26",
+                    },
+                    fontFamily: {
+                        "display": ["Work Sans", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar for better aesthetics */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background-color: #dbcbbd;
+            border-radius: 20px;
+        }
+        .dark ::-webkit-scrollbar-thumb {
+            background-color: #523f35;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-neutral-800 dark:text-neutral-100 antialiased selection:bg-primary selection:text-white">
+<!-- Navigation (Simplified for context) -->
+<nav class="bg-surface-light dark:bg-surface-dark border-b border-neutral-200 dark:border-neutral-800 sticky top-0 z-50">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-20 items-center">
+<div class="flex items-center gap-2">
+<span class="material-icons-outlined text-primary text-3xl">spa</span>
+<span class="text-2xl font-bold text-neutral-900 dark:text-white tracking-tight">Artisan<span class="text-primary">Craft</span></span>
+</div>
+<div class="hidden md:flex space-x-8 text-neutral-600 dark:text-neutral-300 font-medium">
+<a class="hover:text-primary transition-colors" href="#">Shop</a>
+<a class="hover:text-primary transition-colors" href="#">Collections</a>
+<a class="hover:text-primary transition-colors" href="#">Artisans</a>
+<a class="hover:text-primary transition-colors" href="#">About</a>
+</div>
+<div class="flex items-center space-x-4">
+<button class="p-2 text-neutral-500 hover:text-primary transition-colors">
+<span class="material-icons-outlined">search</span>
+</button>
+<button class="p-2 text-neutral-500 hover:text-primary transition-colors">
+<span class="material-icons-outlined">person</span>
+</button>
+<button class="p-2 relative text-primary">
+<span class="material-icons-outlined">shopping_bag</span>
+<span class="absolute top-0 right-0 inline-flex items-center justify-center px-1.5 py-0.5 text-xs font-bold leading-none text-white transform translate-x-1/4 -translate-y-1/4 bg-neutral-800 rounded-full">3</span>
+</button>
+</div>
+</div>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+<!-- Breadcrumbs -->
+<nav aria-label="Breadcrumb" class="flex mb-8 text-sm text-neutral-500 dark:text-neutral-400">
+<ol class="inline-flex items-center space-x-1 md:space-x-3">
+<li class="inline-flex items-center">
+<a class="inline-flex items-center hover:text-primary transition-colors" href="#">
+                        Home
+                    </a>
+</li>
+<li>
+<div class="flex items-center">
+<span class="material-icons-outlined text-base mx-2">chevron_right</span>
+<a class="hover:text-primary transition-colors" href="#">Shop</a>
+</div>
+</li>
+<li aria-current="page">
+<div class="flex items-center">
+<span class="material-icons-outlined text-base mx-2">chevron_right</span>
+<span class="text-neutral-900 dark:text-white font-medium">Shopping Cart</span>
+</div>
+</li>
+</ol>
+</nav>
+<h1 class="text-3xl md:text-4xl font-bold text-neutral-900 dark:text-white mb-8">Your Cart (3 Items)</h1>
+<div class="lg:grid lg:grid-cols-12 lg:gap-12 items-start">
+<!-- Left Column: Cart Items -->
+<div class="lg:col-span-8">
+<!-- Table Header for Desktop -->
+<div class="hidden md:grid grid-cols-12 gap-4 pb-4 border-b border-neutral-200 dark:border-neutral-700 text-sm font-medium text-neutral-500 dark:text-neutral-400 uppercase tracking-wider">
+<div class="col-span-6">Product</div>
+<div class="col-span-2 text-center">Price</div>
+<div class="col-span-2 text-center">Quantity</div>
+<div class="col-span-2 text-right">Total</div>
+</div>
+<!-- Cart Items List -->
+<div class="flex flex-col space-y-6 md:space-y-0">
+<!-- Item 1 -->
+<div class="md:grid md:grid-cols-12 md:gap-4 items-center py-6 border-b border-neutral-200 dark:border-neutral-700 group">
+<!-- Product Details -->
+<div class="col-span-6 flex gap-6">
+<div class="w-24 h-24 shrink-0 rounded-lg overflow-hidden bg-neutral-100 relative group-hover:shadow-md transition-shadow">
+<img alt="Woven rattan basket on a wooden table" class="w-full h-full object-cover" data-alt="Hand-woven rattan basket close up" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBYmPB39NNejxIuw7-CJ-wf-IkIiwM7474oWPZsnLM_uk5EvTS6kZsZfJGqBTVFLUa8yYiCwJHlGyH7r6kakrvZvS1SDlZ5dAkrh7t9SX3_JXVV3b51cQQ-e9t42wqhxgV9X9lT_5TcR17vHEEZ-NeatHh0bzi1DYAKWUs7jCGxyPVRECpn4pYdyKxChBmfmMuEDDfBzeQJsdCMQSfVUGoeBRkn3i8NiJk6R1Sd6tAxQpMi7h63FLf3MwelGyTPT7Ti2vBNPv3SdNQ7"/>
+</div>
+<div class="flex flex-col justify-center">
+<h3 class="text-lg font-semibold text-neutral-900 dark:text-white">Hand-woven Rattan Basket</h3>
+<p class="text-sm text-neutral-500 dark:text-neutral-400 mt-1">Variant: Large, Natural</p>
+<p class="text-xs text-primary mt-2 font-medium">Only 2 left in stock!</p>
+</div>
+</div>
+<!-- Price (Mobile hidden, Desktop shown) -->
+<div class="hidden md:block col-span-2 text-center text-neutral-900 dark:text-neutral-200 font-medium">
+                            $45.00
+                        </div>
+<!-- Quantity Stepper -->
+<div class="flex justify-between md:justify-center items-center col-span-2 mt-4 md:mt-0">
+<label class="md:hidden text-sm font-medium text-neutral-500">Qty:</label>
+<div class="flex items-center border border-neutral-200 dark:border-neutral-700 rounded-lg">
+<button class="w-8 h-8 flex items-center justify-center text-neutral-500 hover:text-primary hover:bg-neutral-50 dark:hover:bg-neutral-800 transition-colors rounded-l-lg">
+<span class="material-icons-outlined text-sm">remove</span>
+</button>
+<input class="w-10 h-8 text-center text-sm border-none bg-transparent focus:ring-0 p-0 text-neutral-900 dark:text-white" readonly="" type="text" value="1"/>
+<button class="w-8 h-8 flex items-center justify-center text-neutral-500 hover:text-primary hover:bg-neutral-50 dark:hover:bg-neutral-800 transition-colors rounded-r-lg">
+<span class="material-icons-outlined text-sm">add</span>
+</button>
+</div>
+</div>
+<!-- Total & Remove -->
+<div class="flex justify-between md:block col-span-2 mt-4 md:mt-0 text-right">
+<div class="md:hidden text-lg font-bold text-neutral-900 dark:text-white">$45.00</div>
+<div class="hidden md:block text-lg font-bold text-neutral-900 dark:text-white">$45.00</div>
+<button class="mt-2 text-sm text-neutral-400 hover:text-red-500 transition-colors flex items-center justify-end w-full md:w-auto gap-1">
+<span class="material-icons-outlined text-base">delete</span>
+<span class="md:hidden">Remove</span>
+</button>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="md:grid md:grid-cols-12 md:gap-4 items-center py-6 border-b border-neutral-200 dark:border-neutral-700 group">
+<div class="col-span-6 flex gap-6">
+<div class="w-24 h-24 shrink-0 rounded-lg overflow-hidden bg-neutral-100 relative group-hover:shadow-md transition-shadow">
+<img alt="Teal ceramic mug with glaze details" class="w-full h-full object-cover" data-alt="Teal glazed ceramic handmade mug" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjj3xcWWg8ElUlscPiDrbfZ3LDtMvIYe1jNSPFDvSIPOrx6f66oeqxh-u6uj-xi22hngoJw7KK6BE8WjZI8vQ_oPCHTVR5tyvN-M4qgAYxNMBIz9iSmHDZ8GGEhOzVBk5vCU4ZN925YWV1gtPU9g8y6UzIarpGoCHGshakTbwYjMy8OPYe1RVEdvhhVc493ub3f-upDa1ZUdC3Gai2m5DnAE_aBUgCOxFCv0wBO2YzwL3MGxxwiWtsLehkwENicFWy-dRonaGNxqXu"/>
+</div>
+<div class="flex flex-col justify-center">
+<h3 class="text-lg font-semibold text-neutral-900 dark:text-white">Ceramic Glazed Mug</h3>
+<p class="text-sm text-neutral-500 dark:text-neutral-400 mt-1">Color: Teal, Finish: Matte</p>
+</div>
+</div>
+<div class="hidden md:block col-span-2 text-center text-neutral-900 dark:text-neutral-200 font-medium">
+                            $22.00
+                        </div>
+<div class="flex justify-between md:justify-center items-center col-span-2 mt-4 md:mt-0">
+<label class="md:hidden text-sm font-medium text-neutral-500">Qty:</label>
+<div class="flex items-center border border-neutral-200 dark:border-neutral-700 rounded-lg">
+<button class="w-8 h-8 flex items-center justify-center text-neutral-500 hover:text-primary hover:bg-neutral-50 dark:hover:bg-neutral-800 transition-colors rounded-l-lg">
+<span class="material-icons-outlined text-sm">remove</span>
+</button>
+<input class="w-10 h-8 text-center text-sm border-none bg-transparent focus:ring-0 p-0 text-neutral-900 dark:text-white" readonly="" type="text" value="2"/>
+<button class="w-8 h-8 flex items-center justify-center text-neutral-500 hover:text-primary hover:bg-neutral-50 dark:hover:bg-neutral-800 transition-colors rounded-r-lg">
+<span class="material-icons-outlined text-sm">add</span>
+</button>
+</div>
+</div>
+<div class="flex justify-between md:block col-span-2 mt-4 md:mt-0 text-right">
+<div class="md:hidden text-lg font-bold text-neutral-900 dark:text-white">$44.00</div>
+<div class="hidden md:block text-lg font-bold text-neutral-900 dark:text-white">$44.00</div>
+<button class="mt-2 text-sm text-neutral-400 hover:text-red-500 transition-colors flex items-center justify-end w-full md:w-auto gap-1">
+<span class="material-icons-outlined text-base">delete</span>
+<span class="md:hidden">Remove</span>
+</button>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="md:grid md:grid-cols-12 md:gap-4 items-center py-6 border-b border-neutral-200 dark:border-neutral-700 group">
+<div class="col-span-6 flex gap-6">
+<div class="w-24 h-24 shrink-0 rounded-lg overflow-hidden bg-neutral-100 relative group-hover:shadow-md transition-shadow">
+<img alt="Macrame wall hanging fiber art" class="w-full h-full object-cover" data-alt="Macrame boho wall decoration" src="https://lh3.googleusercontent.com/aida-public/AB6AXuADsFetReGZpknGHThulAArw_JDs6wVSkrY5bXEFHLf6sIKBLJUcJJRGzNiQnxtihEglMFNUplYfHbVo8KGuT-3sY1RuIGHE9pAlm0H8PNeYu9lNjcMuM2WQhW5yN368XVvTQeu4Lb5R_n-WP8MZ7f3Rqmoorp1FpXZvjIIg1YY3SAJnOGuusc_53gi2dLPLBWnv7K4r_cIbmQviYrVQdjXHqrFNt-FLKtjsOGvPX0QFzd3dDgkVEkEWd08XDe64hDO-pbLEPdF5oP7"/>
+</div>
+<div class="flex flex-col justify-center">
+<h3 class="text-lg font-semibold text-neutral-900 dark:text-white">Macrame Wall Hanging</h3>
+<p class="text-sm text-neutral-500 dark:text-neutral-400 mt-1">Size: 40x60cm</p>
+</div>
+</div>
+<div class="hidden md:block col-span-2 text-center text-neutral-900 dark:text-neutral-200 font-medium">
+                            $60.00
+                        </div>
+<div class="flex justify-between md:justify-center items-center col-span-2 mt-4 md:mt-0">
+<label class="md:hidden text-sm font-medium text-neutral-500">Qty:</label>
+<div class="flex items-center border border-neutral-200 dark:border-neutral-700 rounded-lg">
+<button class="w-8 h-8 flex items-center justify-center text-neutral-500 hover:text-primary hover:bg-neutral-50 dark:hover:bg-neutral-800 transition-colors rounded-l-lg">
+<span class="material-icons-outlined text-sm">remove</span>
+</button>
+<input class="w-10 h-8 text-center text-sm border-none bg-transparent focus:ring-0 p-0 text-neutral-900 dark:text-white" readonly="" type="text" value="1"/>
+<button class="w-8 h-8 flex items-center justify-center text-neutral-500 hover:text-primary hover:bg-neutral-50 dark:hover:bg-neutral-800 transition-colors rounded-r-lg">
+<span class="material-icons-outlined text-sm">add</span>
+</button>
+</div>
+</div>
+<div class="flex justify-between md:block col-span-2 mt-4 md:mt-0 text-right">
+<div class="md:hidden text-lg font-bold text-neutral-900 dark:text-white">$60.00</div>
+<div class="hidden md:block text-lg font-bold text-neutral-900 dark:text-white">$60.00</div>
+<button class="mt-2 text-sm text-neutral-400 hover:text-red-500 transition-colors flex items-center justify-end w-full md:w-auto gap-1">
+<span class="material-icons-outlined text-base">delete</span>
+<span class="md:hidden">Remove</span>
+</button>
+</div>
+</div>
+</div>
+<div class="mt-8">
+<a class="inline-flex items-center text-primary font-medium hover:underline" href="#">
+<span class="material-icons-outlined text-lg mr-2">west</span>
+                        Continue Shopping
+                    </a>
+</div>
+</div>
+<!-- Right Column: Order Summary -->
+<div class="lg:col-span-4 mt-12 lg:mt-0">
+<div class="bg-surface-light dark:bg-surface-dark border border-neutral-200 dark:border-neutral-700 rounded-xl p-6 lg:p-8 shadow-sm lg:sticky lg:top-28">
+<h2 class="text-xl font-bold text-neutral-900 dark:text-white mb-6 border-b border-neutral-100 dark:border-neutral-800 pb-4">Order Summary</h2>
+<!-- Cost Breakdown -->
+<div class="space-y-4 mb-6">
+<div class="flex justify-between text-neutral-600 dark:text-neutral-300">
+<span>Subtotal</span>
+<span class="font-medium">$149.00</span>
+</div>
+<div class="flex justify-between text-neutral-600 dark:text-neutral-300">
+<div class="flex flex-col">
+<span>Shipping Estimate</span>
+<a class="text-xs text-primary hover:underline mt-0.5" href="#">Calculate shipping</a>
+</div>
+<span class="font-medium">$12.00</span>
+</div>
+<div class="flex justify-between text-neutral-600 dark:text-neutral-300">
+<span>Tax Estimate</span>
+<span class="font-medium">$11.92</span>
+</div>
+</div>
+<!-- Coupon Input -->
+<div class="mb-6 pt-6 border-t border-neutral-100 dark:border-neutral-800">
+<label class="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-2">Coupon Code</label>
+<div class="flex gap-2">
+<input class="block w-full rounded-lg border-neutral-300 dark:border-neutral-600 bg-neutral-50 dark:bg-neutral-800 text-neutral-900 dark:text-white placeholder-neutral-400 focus:border-primary focus:ring-primary sm:text-sm" placeholder="Enter code" type="text"/>
+<button class="px-4 py-2 border border-primary text-primary font-medium rounded-lg hover:bg-primary hover:text-white transition-all text-sm whitespace-nowrap">
+                                Apply
+                            </button>
+</div>
+</div>
+<!-- Grand Total -->
+<div class="flex justify-between items-center py-6 border-t border-neutral-100 dark:border-neutral-800 mb-6">
+<span class="text-lg font-bold text-neutral-900 dark:text-white">Total</span>
+<span class="text-2xl font-bold text-primary">$172.92</span>
+</div>
+<!-- Main Action -->
+<button class="w-full bg-primary hover:bg-primary-dark text-white font-semibold py-4 px-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 flex items-center justify-center gap-2 group">
+                        Proceed to Checkout
+                        <span class="material-icons-outlined group-hover:translate-x-1 transition-transform">east</span>
+</button>
+<!-- Trust Signals -->
+<div class="mt-8 grid grid-cols-2 gap-4">
+<div class="flex items-center gap-2 text-xs text-neutral-500 dark:text-neutral-400">
+<span class="material-icons-outlined text-lg text-primary/80">verified_user</span>
+<span>Secure Checkout</span>
+</div>
+<div class="flex items-center gap-2 text-xs text-neutral-500 dark:text-neutral-400">
+<span class="material-icons-outlined text-lg text-primary/80">local_shipping</span>
+<span>Free returns</span>
+</div>
+<div class="flex items-center gap-2 text-xs text-neutral-500 dark:text-neutral-400">
+<span class="material-icons-outlined text-lg text-primary/80">eco</span>
+<span>Carbon Neutral</span>
+</div>
+<div class="flex items-center gap-2 text-xs text-neutral-500 dark:text-neutral-400">
+<span class="material-icons-outlined text-lg text-primary/80">support_agent</span>
+<span>24/7 Support</span>
+</div>
+</div>
+<!-- Accepted Payments -->
+<div class="mt-8 pt-6 border-t border-neutral-100 dark:border-neutral-800 flex justify-center gap-3 opacity-60 grayscale hover:grayscale-0 transition-all">
+<div class="h-6 w-10 bg-neutral-200 dark:bg-neutral-700 rounded flex items-center justify-center text-[8px] font-bold text-neutral-500">VISA</div>
+<div class="h-6 w-10 bg-neutral-200 dark:bg-neutral-700 rounded flex items-center justify-center text-[8px] font-bold text-neutral-500">MC</div>
+<div class="h-6 w-10 bg-neutral-200 dark:bg-neutral-700 rounded flex items-center justify-center text-[8px] font-bold text-neutral-500">AMEX</div>
+<div class="h-6 w-10 bg-neutral-200 dark:bg-neutral-700 rounded flex items-center justify-center text-[8px] font-bold text-neutral-500">PP</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Featured Section Below Cart (Optional Upsell) -->
+<div class="mt-20 pt-10 border-t border-neutral-200 dark:border-neutral-700">
+<h2 class="text-2xl font-bold text-neutral-900 dark:text-white mb-8">You Might Also Like</h2>
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+<!-- Recommendation 1 -->
+<div class="group cursor-pointer">
+<div class="aspect-square bg-neutral-100 rounded-lg overflow-hidden relative mb-4">
+<img alt="Ceramic bowl set on linen cloth" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Handcrafted ceramic bowl set" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDtkMSdFWERmi3IexNtdAO22zvjo028vqexilQXb6TdI-BQ9jbVw7IW_Pil_94fkkOb8JWJVOnfjg79NDFiFoEDWkVVOJkESXnqjVXDDBeTh1lJX2kBUlA4R1_DKYIK0e20LVK8sQhziARHYJIv4U1mPcB1h075clZpGCKzSPyDhIhU7kK2GcNOPjeFLJDs-SgR1pHWMepMJX49jG8az3Ka7Y2UXkt5h2OojndhGhonySxDqi5qi1UxiFfio_XwUETlWRXTE4rqQLts"/>
+<button class="absolute bottom-3 right-3 w-10 h-10 bg-white dark:bg-neutral-800 rounded-full flex items-center justify-center shadow-md hover:bg-primary hover:text-white transition-colors text-neutral-900 dark:text-white">
+<span class="material-icons-outlined text-sm">add_shopping_cart</span>
+</button>
+</div>
+<h3 class="font-medium text-neutral-900 dark:text-white">Rustic Clay Bowl</h3>
+<p class="text-neutral-500 text-sm">$28.00</p>
+</div>
+<!-- Recommendation 2 -->
+<div class="group cursor-pointer">
+<div class="aspect-square bg-neutral-100 rounded-lg overflow-hidden relative mb-4">
+<img alt="Wooden spoon carving set" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Hand-carved wooden spoon set" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5T3ffkI82TOlG9ORjDWUBUfc1bJJ8qTW32QGw-REzhGfjFqhUxB5aXH3Lpj3_o71D02416CHXlaLU4lboTO6rjYl7gUaHrFZ5UmIsSSwG2CntmziFgC38iYxMcm6gGy-NTSY-fz2Nb5d09CQiP7-vw6UPFAN63seiFZ67ylL-YpBhQtPThgujwI9yd_Jf8erQFlC4gLIUBKLbqVDhWEm5po_xYf7VFSxoDz6zpVvnMiJZBHQmx0GHQ1bYEvVKlU7f0KaOBMjFvVL0"/>
+<button class="absolute bottom-3 right-3 w-10 h-10 bg-white dark:bg-neutral-800 rounded-full flex items-center justify-center shadow-md hover:bg-primary hover:text-white transition-colors text-neutral-900 dark:text-white">
+<span class="material-icons-outlined text-sm">add_shopping_cart</span>
+</button>
+</div>
+<h3 class="font-medium text-neutral-900 dark:text-white">Olive Wood Spoons</h3>
+<p class="text-neutral-500 text-sm">$35.00</p>
+</div>
+<!-- Recommendation 3 -->
+<div class="group cursor-pointer">
+<div class="aspect-square bg-neutral-100 rounded-lg overflow-hidden relative mb-4">
+<img alt="Linen napkins folded on table" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Organic linen napkin set" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDqkk7As6rQKbCqHWYk2AaJVHtFvql-hBTC3yCV7naXa5vYZxHOsj8COAgAb7WWTTSpU6LupxAiVcW6Yp9cCTRzwWNORwy2NQSjfgPSa1lBfEI5UQW7WK3KrasjZFTszz1Q77E2d740Dxfdbcnxod4ngV-88pB8DjGRshnM5DO0MItMCcA8E8S_DwfbhJfGo5PKoeY0wSkIH51tqM6-2ve3aYRDSSPj6_e05JXD9W6wPWrJVAiRQBr-fZ_KeVLBjhIOYFVABciEfH8"/>
+<button class="absolute bottom-3 right-3 w-10 h-10 bg-white dark:bg-neutral-800 rounded-full flex items-center justify-center shadow-md hover:bg-primary hover:text-white transition-colors text-neutral-900 dark:text-white">
+<span class="material-icons-outlined text-sm">add_shopping_cart</span>
+</button>
+</div>
+<h3 class="font-medium text-neutral-900 dark:text-white">Linen Napkins (Set of 4)</h3>
+<p class="text-neutral-500 text-sm">$42.00</p>
+</div>
+<!-- Recommendation 4 -->
+<div class="group cursor-pointer">
+<div class="aspect-square bg-neutral-100 rounded-lg overflow-hidden relative mb-4">
+<img alt="Soy wax candle in amber jar" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Hand-poured soy wax candle" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDVDMEu3gdIWGg6MXXDN1nqX9l7_o6eO30273GrUdUkllHIhxNh11etY1qja640GWm_KQxNFjE8m8I5EFfeFXC33GOITTFVqU8YO-9y3BYLHD4Hcz7DO72p6PQkd53E5EhWCBcU0vJlbIfFaFxStZzhvuzWkL73jJw5Ww6942vfBJjMSIWl78okdo9vG-LopoiMjF8Xen1a5feAtQqaoGdfMkXwJZlcU_7Ob44jeH-jb1TCawvXFSey4phnfks8HfO17RVbFgaV_Xsr"/>
+<button class="absolute bottom-3 right-3 w-10 h-10 bg-white dark:bg-neutral-800 rounded-full flex items-center justify-center shadow-md hover:bg-primary hover:text-white transition-colors text-neutral-900 dark:text-white">
+<span class="material-icons-outlined text-sm">add_shopping_cart</span>
+</button>
+</div>
+<h3 class="font-medium text-neutral-900 dark:text-white">Amber Jar Candle</h3>
+<p class="text-neutral-500 text-sm">$18.00</p>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer (Simplified) -->
+<footer class="bg-surface-light dark:bg-surface-dark border-t border-neutral-200 dark:border-neutral-800 py-12 mt-12">
+<div class="max-w-7xl mx-auto px-4 text-center text-neutral-500">
+<div class="flex items-center justify-center gap-2 mb-4">
+<span class="material-icons-outlined text-primary text-xl">spa</span>
+<span class="text-lg font-bold text-neutral-900 dark:text-white tracking-tight">Artisan<span class="text-primary">Craft</span></span>
+</div>
+<p>© 2023 ArtisanCraft Inc. Handmade with love.</p>
+</div>
+</footer>
+<script>
+        // Simple dark mode toggle for demonstration logic
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
+</body></html>

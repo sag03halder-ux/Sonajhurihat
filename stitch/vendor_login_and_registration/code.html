@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Vendor Login &amp; Registration - Handicraft Market</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ec6d13",
+                        "background-light": "#f8f7f6",
+                        "background-dark": "#221810",
+                    },
+                    fontFamily: {
+                        "display": ["Work Sans", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        
+        /* Custom Checkbox Style to match theme */
+        .form-checkbox:checked {
+            background-color: #ec6d13;
+            border-color: #ec6d13;
+        }
+        
+        /* Smooth fade for tab switching */
+        .tab-content {
+            transition: opacity 0.3s ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-gray-800 dark:text-gray-100 font-display min-h-screen flex flex-col">
+<!-- Navbar Minimal -->
+<nav class="absolute top-0 w-full z-20 px-6 py-4 flex justify-between items-center">
+<div class="flex items-center gap-2">
+<span class="text-white font-bold text-2xl tracking-tighter drop-shadow-md">Handicraft<span class="text-primary">Hub</span></span>
+</div>
+<a class="text-white/90 hover:text-white text-sm font-medium drop-shadow-md flex items-center gap-1 transition-colors" href="#">
+<span class="material-icons text-base">arrow_back</span> Back to Shop
+        </a>
+</nav>
+<!-- Main Content: Split Screen -->
+<main class="flex-grow flex flex-col lg:flex-row h-screen overflow-hidden">
+<!-- Left Side: Visual & Inspiration -->
+<section class="relative lg:w-1/2 w-full h-64 lg:h-full flex flex-col justify-end p-8 lg:p-16">
+<!-- Background Image -->
+<div class="absolute inset-0 z-0">
+<img alt="Artisan working on pottery wheel in workshop" class="w-full h-full object-cover" data-alt="Artisan working on pottery wheel in workshop" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgYJ9vw0qKz2xtRAFi3MKE6805YXozNWpMI8uC7eXbck1jsL8NTZYMpQUVzHEsS4YVnaygdB-4VRyuZeEUbrjzFlM3ZLkIhchCQrtpuFEgjg_02Jcfh8gXyh214s535qaJHLoN2zkqeqxTrZNa6Dq6GI2LUS_caFAB3MZZnNXTKEwmz7KH2dG_D0RoxVf47GKUBwQ9RljZMdJpd3j67lO5fHmaapBElaFBfvvK8KN-B4rEnXQ_OiyQbPNQ7BvgRfiNB5Na3CxdwbCM"/>
+<!-- Overlay Gradient -->
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/30"></div>
+<!-- Primary tint overlay for harmony -->
+<div class="absolute inset-0 bg-primary/20 mix-blend-overlay"></div>
+</div>
+<!-- Content -->
+<div class="relative z-10 text-white max-w-lg mb-4 lg:mb-12">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-xs font-semibold tracking-wide uppercase mb-4">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+                    Vendor Portal
+                </div>
+<h1 class="text-3xl lg:text-5xl font-bold leading-tight mb-4">Craft Your Legacy.</h1>
+<p class="text-white/90 text-lg lg:text-xl font-light leading-relaxed">
+                    Join the world's largest community of authentic artisans. Connect directly with customers who value the soul in your work.
+                </p>
+<!-- Testimonial / Social Proof -->
+<div class="mt-8 flex items-center gap-4 pt-8 border-t border-white/20">
+<div class="flex -space-x-3">
+<img alt="Artisan portrait" class="w-10 h-10 rounded-full border-2 border-white object-cover" data-alt="Female artisan portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCHIADMPWqNc87ervzW6dYkAXJi37es_SMa1EzBLxhQouTusIn2B5-4bjmVbAKU1-PEb7P5XFKAczOeHPfx37fjhvhS-LdvsOuLD2gBBZiwvt8uXd7IhEdNdEknRurT7EpgSRurrjaqOjaMyGP0HoKtg4s_k_vAuL_NEuNXIoxgTzPbEEepWcoS8Vl8PGCljidL5h86t3DBpwEw06ElQP77zMFez0DTwnFWk4ijdAXLO4vXrBvhENvGSksUo04fdOj6AUhNHSIoq5V"/>
+<img alt="Artisan portrait" class="w-10 h-10 rounded-full border-2 border-white object-cover" data-alt="Male artisan portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNUcwd1Iv41z8AQHBLrq2Yq7rT7p9D9og7vsBZcERh4pvpxRo8p-SwxYz5VXH-ZivSmTBQJyXN01wBsAezHO4YrZ8GPN-I_H4EKEDpJAp0kEwGRFr0y72i9f0-ObNy62U6M_CygUpewWxfK8tPLI7DSAt5zZTLnKliKJfEYmgXGWBkreImfJtU-AI_eOvyJMa102RCZuSohSSMz0TBxPjro7GWVEkykwIX9-kFKtKRqtJ7jiWxIsaLNGH_ZcxVKzUbcfPW8fvsE9nE"/>
+<img alt="Artisan portrait" class="w-10 h-10 rounded-full border-2 border-white object-cover" data-alt="Male artisan portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYD9cxYe42KscEww7_OXtWaaUdgXa25o5N5Wbif8taLNo8eccGqyb7S60pxuYOhm7nQh34ZaBYkf2j0BpM9Gc61I6EiR7k0G5AX5HWt9fdEzFVrvbdNxqD_B2AK7kC0pbtPPOUOhks-VvfZTtlHH7_WPJqy2E3nzl9DGRv-1fZrcaQ7xXTHq64oNPPijHZSO9mHsIyGlTN4-mcCx6qj12JXmknXcyudbxKiYWXqFRDD9EZzWcNcw15IdjZD1-MUsZulLU0pSrei6ZW"/>
+</div>
+<div>
+<p class="font-bold text-sm">Trusted by 5,000+ Artisans</p>
+<div class="flex text-primary text-xs">
+<span class="material-icons text-[14px]">star</span>
+<span class="material-icons text-[14px]">star</span>
+<span class="material-icons text-[14px]">star</span>
+<span class="material-icons text-[14px]">star</span>
+<span class="material-icons text-[14px]">star</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Right Side: Interactive Forms -->
+<section class="lg:w-1/2 w-full h-full bg-background-light dark:bg-background-dark flex items-center justify-center p-6 lg:p-12 overflow-y-auto">
+<div class="w-full max-w-md space-y-8">
+<!-- Tab Switcher -->
+<div class="bg-gray-200 dark:bg-gray-800 p-1 rounded-full flex relative">
+<!-- This input logic mimics functionality for visual demonstration -->
+<input checked="" class="peer/login hidden" id="tab-login" name="auth-tab" onchange="document.getElementById('form-login').classList.remove('hidden'); document.getElementById('form-register').classList.add('hidden');" type="radio"/>
+<label class="flex-1 text-center py-3 rounded-full text-sm font-semibold cursor-pointer transition-all text-gray-500 dark:text-gray-400 peer-checked/login:bg-white dark:peer-checked/login:bg-gray-700 peer-checked/login:text-primary peer-checked/login:shadow-md select-none" for="tab-login">
+                        Login
+                    </label>
+<input class="peer/register hidden" id="tab-register" name="auth-tab" onchange="document.getElementById('form-register').classList.remove('hidden'); document.getElementById('form-login').classList.add('hidden');" type="radio"/>
+<label class="flex-1 text-center py-3 rounded-full text-sm font-semibold cursor-pointer transition-all text-gray-500 dark:text-gray-400 peer-checked/register:bg-white dark:peer-checked/register:bg-gray-700 peer-checked/register:text-primary peer-checked/register:shadow-md select-none" for="tab-register">
+                        Join as Vendor
+                    </label>
+</div>
+<!-- Login Form -->
+<div class="tab-content animate-fade-in space-y-6" id="form-login">
+<div class="text-center space-y-2">
+<h2 class="text-3xl font-bold text-gray-900 dark:text-white">Welcome Back, Maker.</h2>
+<p class="text-gray-500 dark:text-gray-400">Enter your credentials to access your shop dashboard.</p>
+</div>
+<form class="space-y-5" onsubmit="event.preventDefault();">
+<div class="space-y-1">
+<label class="block text-sm font-medium text-gray-700 dark:text-gray-300 ml-2">Email Address</label>
+<div class="relative">
+<span class="material-icons absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">email</span>
+<input class="w-full pl-11 pr-4 py-3 rounded-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all placeholder-gray-400 dark:text-white" placeholder="your@email.com" type="email"/>
+</div>
+</div>
+<div class="space-y-1">
+<label class="block text-sm font-medium text-gray-700 dark:text-gray-300 ml-2">Password</label>
+<div class="relative">
+<span class="material-icons absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">lock</span>
+<input class="w-full pl-11 pr-4 py-3 rounded-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all placeholder-gray-400 dark:text-white" placeholder="••••••••" type="password"/>
+</div>
+<div class="flex justify-end pt-1">
+<a class="text-sm font-medium text-primary hover:text-primary/80" href="#">Forgot Password?</a>
+</div>
+</div>
+<button class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-3.5 rounded-full shadow-lg shadow-primary/30 transition-transform transform hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-2" type="submit">
+                            Access Dashboard <span class="material-icons text-sm">arrow_forward</span>
+</button>
+</form>
+</div>
+<!-- Registration Form -->
+<div class="tab-content hidden animate-fade-in space-y-6" id="form-register">
+<div class="text-center space-y-2">
+<h2 class="text-3xl font-bold text-gray-900 dark:text-white">Start Your Journey.</h2>
+<p class="text-gray-500 dark:text-gray-400">Create your storefront and start selling today.</p>
+</div>
+<form class="space-y-5" onsubmit="event.preventDefault();">
+<!-- Store Details -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="space-y-1">
+<label class="block text-sm font-medium text-gray-700 dark:text-gray-300 ml-2">Store Name</label>
+<div class="relative">
+<span class="material-icons absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-lg">storefront</span>
+<input class="w-full pl-10 pr-4 py-3 rounded-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all placeholder-gray-400 dark:text-white text-sm" placeholder="Organic Weaves" type="text"/>
+</div>
+</div>
+<div class="space-y-1">
+<label class="block text-sm font-medium text-gray-700 dark:text-gray-300 ml-2">Artisan Type</label>
+<div class="relative">
+<span class="material-icons absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-lg">category</span>
+<select class="w-full pl-10 pr-8 py-3 rounded-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all text-gray-700 dark:text-white appearance-none cursor-pointer text-sm">
+<option disabled="" selected="" value="">Select Craft</option>
+<option value="pottery">Pottery &amp; Ceramics</option>
+<option value="textiles">Textiles &amp; Fabrics</option>
+<option value="jewelry">Jewelry &amp; Metal</option>
+<option value="woodwork">Woodworking</option>
+<option value="glass">Glass Art</option>
+</select>
+<span class="material-icons absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Portfolio Link -->
+<div class="space-y-1">
+<label class="block text-sm font-medium text-gray-700 dark:text-gray-300 ml-2">Portfolio / Social Link <span class="text-gray-400 font-normal text-xs">(Optional)</span></label>
+<div class="relative">
+<span class="material-icons absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">link</span>
+<input class="w-full pl-11 pr-4 py-3 rounded-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all placeholder-gray-400 dark:text-white" placeholder="instagram.com/yourbrand" type="url"/>
+</div>
+</div>
+<!-- Account Credentials -->
+<div class="space-y-1">
+<label class="block text-sm font-medium text-gray-700 dark:text-gray-300 ml-2">Email Address</label>
+<div class="relative">
+<span class="material-icons absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">email</span>
+<input class="w-full pl-11 pr-4 py-3 rounded-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all placeholder-gray-400 dark:text-white" placeholder="your@email.com" type="email"/>
+</div>
+</div>
+<div class="space-y-1">
+<label class="block text-sm font-medium text-gray-700 dark:text-gray-300 ml-2">Create Password</label>
+<div class="relative">
+<span class="material-icons absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">lock_outline</span>
+<input class="w-full pl-11 pr-4 py-3 rounded-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all placeholder-gray-400 dark:text-white" placeholder="Min. 8 characters" type="password"/>
+</div>
+</div>
+<!-- Terms -->
+<div class="flex items-start gap-3 pl-1">
+<div class="flex items-center h-5">
+<input class="w-5 h-5 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary/30 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary/60 dark:ring-offset-gray-800 text-primary accent-primary rounded-md" id="terms" type="checkbox"/>
+</div>
+<label class="text-sm font-medium text-gray-500 dark:text-gray-400" for="terms">
+                                I agree to the <a class="text-primary hover:underline" href="#">Vendor Terms</a> and <a class="text-primary hover:underline" href="#">Privacy Policy</a>.
+                            </label>
+</div>
+<button class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-3.5 rounded-full shadow-lg shadow-primary/30 transition-transform transform hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-2" type="submit">
+                            Open My Shop <span class="material-icons text-sm">store</span>
+</button>
+</form>
+<div class="flex items-center justify-center gap-2 mt-4 text-xs text-gray-400">
+<span class="material-icons text-sm">lock</span> Secure Registration
+                    </div>
+</div>
+<!-- Footer Links -->
+<div class="pt-6 text-center border-t border-gray-200 dark:border-gray-800">
+<p class="text-sm text-gray-500">
+                        Need help onboarding? <a class="text-primary font-medium hover:underline" href="#">Contact Support</a>
+</p>
+</div>
+</div>
+</section>
+</main>
+</body></html>

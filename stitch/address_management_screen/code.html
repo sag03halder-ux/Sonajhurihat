@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Address Management - Handicraft Store</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ec6d13",
+                        "primary-light": "#fbdcc9", // Light version for subtle backgrounds
+                        "background-light": "#f8f7f6",
+                        "background-dark": "#221810",
+                        "neutral-surface": "#ffffff",
+                        "neutral-surface-dark": "#2d2117",
+                        "neutral-text": "#4b3c32", // Dark brown/gray derived from primary hue
+                        "neutral-text-light": "#8c7e74",
+                    },
+                    fontFamily: {
+                        "display": ["Work Sans", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar for webkit */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background-color: #d1d5db;
+            border-radius: 20px;
+        }
+        .text-primary-hover:hover {
+            color: #ec6d13;
+        }
+        .bg-primary-hover:hover {
+            background-color: #d85f0c;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-neutral-text dark:text-gray-200 font-display min-h-screen flex flex-col">
+<!-- Navigation Bar -->
+<nav class="bg-white dark:bg-neutral-surface-dark shadow-sm border-b border-gray-100 dark:border-gray-800 sticky top-0 z-50">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-16">
+<div class="flex items-center">
+<div class="flex-shrink-0 flex items-center gap-2">
+<span class="material-icons text-primary text-3xl">local_mall</span>
+<span class="font-bold text-xl tracking-tight text-gray-900 dark:text-white">Artisan<span class="text-primary">Kraft</span></span>
+</div>
+<div class="hidden sm:ml-8 sm:flex sm:space-x-8">
+<a class="border-transparent text-gray-500 hover:text-gray-700 dark:text-gray-300 dark:hover:text-white inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium" href="#">Shop</a>
+<a class="border-transparent text-gray-500 hover:text-gray-700 dark:text-gray-300 dark:hover:text-white inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium" href="#">Artisans</a>
+<a class="border-transparent text-gray-500 hover:text-gray-700 dark:text-gray-300 dark:hover:text-white inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium" href="#">About</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-1 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none">
+<span class="material-icons">search</span>
+</button>
+<button class="p-1 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none relative">
+<span class="material-icons">shopping_cart</span>
+<span class="absolute top-0 right-0 block h-2 w-2 rounded-full bg-primary ring-2 ring-white"></span>
+</button>
+<div class="ml-3 relative flex items-center gap-2 cursor-pointer">
+<img alt="User Avatar" class="h-8 w-8 rounded-full object-cover border border-gray-200" data-alt="Portrait of a smiling woman" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7Q_VFy1TKw7uaxzPytXOnjvktPECr7XaJvbngbccRi_Pi6HW36R94IRVN1z-PJkt_icbIKyw4HsG49liP17ZlYGXebzN0Xr80RUzereInBhxBMEvV0K7sA_r0WiALv1-e3meL_DslqVy2uatZUF2B-5BI8m03mzuRJaGx78iukBD4B5rOTaFoSgU5zza4yp4hUGbQNPYMw9yi2u8UlW34Ww0ZOF3oobWAth8mCB5BI0L6vHB61Or2opqFlXxiobr6GP2buQ2Xapu3"/>
+<span class="text-sm font-medium text-gray-700 dark:text-gray-200 hidden md:block">Jane Doe</span>
+</div>
+</div>
+</div>
+</div>
+</nav>
+<!-- Main Content Area -->
+<div class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
+<div class="lg:grid lg:grid-cols-12 lg:gap-x-8">
+<!-- Sidebar Navigation -->
+<aside class="py-6 px-2 sm:px-6 lg:py-0 lg:px-0 lg:col-span-3">
+<nav class="space-y-1">
+<a class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-gray-800 dark:hover:text-white group rounded-md px-3 py-2 flex items-center text-sm font-medium" href="#">
+<span class="material-icons text-gray-400 group-hover:text-gray-500 mr-3 flex-shrink-0 h-6 w-6 text-[22px]">person</span>
+<span class="truncate">Profile</span>
+</a>
+<a class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-gray-800 dark:hover:text-white group rounded-md px-3 py-2 flex items-center text-sm font-medium" href="#">
+<span class="material-icons text-gray-400 group-hover:text-gray-500 mr-3 flex-shrink-0 h-6 w-6 text-[22px]">shopping_bag</span>
+<span class="truncate">Orders</span>
+</a>
+<a aria-current="page" class="bg-primary/10 text-primary group rounded-md px-3 py-2 flex items-center text-sm font-medium" href="#">
+<span class="material-icons text-primary mr-3 flex-shrink-0 h-6 w-6 text-[22px]">location_on</span>
+<span class="truncate">Addresses</span>
+</a>
+<a class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-gray-800 dark:hover:text-white group rounded-md px-3 py-2 flex items-center text-sm font-medium" href="#">
+<span class="material-icons text-gray-400 group-hover:text-gray-500 mr-3 flex-shrink-0 h-6 w-6 text-[22px]">credit_card</span>
+<span class="truncate">Payment Methods</span>
+</a>
+<a class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-gray-800 dark:hover:text-white group rounded-md px-3 py-2 flex items-center text-sm font-medium" href="#">
+<span class="material-icons text-gray-400 group-hover:text-gray-500 mr-3 flex-shrink-0 h-6 w-6 text-[22px]">favorite</span>
+<span class="truncate">Wishlist</span>
+</a>
+</nav>
+</aside>
+<!-- Main Dashboard Content -->
+<div class="space-y-6 sm:px-6 lg:px-0 lg:col-span-9">
+<!-- Header & Breadcrumbs -->
+<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+<div>
+<nav aria-label="Breadcrumb" class="flex">
+<ol class="flex items-center space-x-2">
+<li>
+<a class="text-gray-400 hover:text-gray-500" href="#">
+<span class="material-icons text-lg align-middle">home</span>
+</a>
+</li>
+<li>
+<span class="text-gray-300">/</span>
+</li>
+<li>
+<a class="text-sm font-medium text-gray-500 hover:text-gray-700 dark:text-gray-400" href="#">Account</a>
+</li>
+<li>
+<span class="text-gray-300">/</span>
+</li>
+<li>
+<span aria-current="page" class="text-sm font-medium text-primary">Addresses</span>
+</li>
+</ol>
+</nav>
+<h1 class="text-3xl font-bold leading-tight text-gray-900 dark:text-white mt-2">My Addresses</h1>
+<p class="mt-1 text-sm text-gray-500 dark:text-gray-400">Manage your shipping and billing locations for faster checkout.</p>
+</div>
+</div>
+<!-- Address Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Card 1: Default Address -->
+<div class="bg-white dark:bg-neutral-surface-dark rounded-xl shadow-sm border-2 border-primary/20 p-6 relative flex flex-col h-full transition-shadow hover:shadow-md">
+<div class="absolute top-4 right-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary/10 text-primary">
+                                Default
+                            </span>
+</div>
+<div class="flex items-center gap-2 mb-4">
+<span class="material-icons text-gray-400 dark:text-gray-500">home</span>
+<h3 class="text-lg font-semibold text-gray-900 dark:text-white">Home</h3>
+</div>
+<div class="flex-grow space-y-1 text-sm text-gray-600 dark:text-gray-300">
+<p class="font-medium text-gray-900 dark:text-white">Jane Doe</p>
+<p>123 Craft Lane</p>
+<p>Artisan Village, CA 90210</p>
+<p>United States</p>
+<p class="mt-2 text-gray-500">+1 (555) 123-4567</p>
+</div>
+<div class="mt-6 pt-4 border-t border-gray-100 dark:border-gray-700 flex justify-between items-center">
+<div class="flex space-x-2">
+<button class="text-gray-400 hover:text-primary transition-colors p-1" title="Edit">
+<span class="material-icons text-xl">edit</span>
+</button>
+<button class="text-gray-400 hover:text-red-500 transition-colors p-1" title="Delete">
+<span class="material-icons text-xl">delete</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Card 2: Office Address -->
+<div class="bg-white dark:bg-neutral-surface-dark rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-6 relative flex flex-col h-full transition-shadow hover:shadow-md">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-icons text-gray-400 dark:text-gray-500">business</span>
+<h3 class="text-lg font-semibold text-gray-900 dark:text-white">Office</h3>
+</div>
+<div class="flex-grow space-y-1 text-sm text-gray-600 dark:text-gray-300">
+<p class="font-medium text-gray-900 dark:text-white">Jane Doe (Attn: Delivery)</p>
+<p>456 Business Park, Suite 200</p>
+<p>Metro City, NY 10001</p>
+<p>United States</p>
+<p class="mt-2 text-gray-500">+1 (555) 987-6543</p>
+</div>
+<div class="mt-6 pt-4 border-t border-gray-100 dark:border-gray-700 flex justify-between items-center">
+<div class="flex space-x-2">
+<button class="text-gray-400 hover:text-primary transition-colors p-1" title="Edit">
+<span class="material-icons text-xl">edit</span>
+</button>
+<button class="text-gray-400 hover:text-red-500 transition-colors p-1" title="Delete">
+<span class="material-icons text-xl">delete</span>
+</button>
+</div>
+<button class="text-sm text-gray-500 hover:text-primary font-medium transition-colors">
+                                Set as Default
+                            </button>
+</div>
+</div>
+<!-- Card 3: Parents House -->
+<div class="bg-white dark:bg-neutral-surface-dark rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-6 relative flex flex-col h-full transition-shadow hover:shadow-md">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-icons text-gray-400 dark:text-gray-500">cottage</span>
+<h3 class="text-lg font-semibold text-gray-900 dark:text-white">Parent's House</h3>
+</div>
+<div class="flex-grow space-y-1 text-sm text-gray-600 dark:text-gray-300">
+<p class="font-medium text-gray-900 dark:text-white">John Doe</p>
+<p>789 Oak Street</p>
+<p>Quiet Town, TX 75001</p>
+<p>United States</p>
+<p class="mt-2 text-gray-500">+1 (555) 444-2222</p>
+</div>
+<div class="mt-6 pt-4 border-t border-gray-100 dark:border-gray-700 flex justify-between items-center">
+<div class="flex space-x-2">
+<button class="text-gray-400 hover:text-primary transition-colors p-1" title="Edit">
+<span class="material-icons text-xl">edit</span>
+</button>
+<button class="text-gray-400 hover:text-red-500 transition-colors p-1" title="Delete">
+<span class="material-icons text-xl">delete</span>
+</button>
+</div>
+<button class="text-sm text-gray-500 hover:text-primary font-medium transition-colors">
+                                Set as Default
+                            </button>
+</div>
+</div>
+<!-- Add New Card -->
+<button class="group relative block w-full h-full border-2 border-gray-300 dark:border-gray-600 border-dashed rounded-xl p-6 text-center hover:border-primary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary dark:focus:ring-offset-gray-900 transition-all duration-200 hover:bg-white dark:hover:bg-neutral-surface-dark min-h-[250px] flex flex-col items-center justify-center gap-3">
+<div class="mx-auto h-12 w-12 text-gray-400 group-hover:text-primary transition-colors">
+<span class="material-icons text-5xl">add_circle_outline</span>
+</div>
+<span class="mt-2 block text-sm font-medium text-gray-900 dark:text-gray-100 group-hover:text-primary">
+                            Add New Address
+                        </span>
+</button>
+</div>
+<!-- Info Alert (Example of contextual help) -->
+<div class="rounded-lg bg-blue-50 dark:bg-blue-900/20 p-4 border border-blue-100 dark:border-blue-800">
+<div class="flex">
+<div class="flex-shrink-0">
+<span class="material-icons text-blue-400">info</span>
+</div>
+<div class="ml-3">
+<h3 class="text-sm font-medium text-blue-800 dark:text-blue-200">International Shipping</h3>
+<div class="mt-2 text-sm text-blue-700 dark:text-blue-300">
+<p>Addresses outside the US may be subject to additional customs fees upon delivery. Check our <a class="font-medium underline hover:text-blue-600" href="#">shipping policy</a> for more details.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Modal (Technically hidden by default, but displayed here for design context) -->
+<!-- In a real app, this would be triggered by JS. Showing it 'inline' at the bottom to demonstrate design -->
+<div aria-labelledby="modal-title" aria-modal="true" class="fixed inset-0 z-10 overflow-y-auto hidden" id="address-modal" role="dialog">
+<div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+<!-- Background overlay -->
+<div aria-hidden="true" class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
+<span aria-hidden="true" class="hidden sm:inline-block sm:align-middle sm:h-screen">​</span>
+<!-- Modal Panel -->
+<div class="relative inline-block align-bottom bg-white dark:bg-neutral-surface-dark rounded-xl px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full sm:p-6 border border-gray-200 dark:border-gray-700">
+<div class="absolute top-0 right-0 pt-4 pr-4">
+<button class="bg-white dark:bg-transparent rounded-md text-gray-400 hover:text-gray-500 focus:outline-none" type="button">
+<span class="sr-only">Close</span>
+<span class="material-icons">close</span>
+</button>
+</div>
+<div>
+<h3 class="text-lg leading-6 font-medium text-gray-900 dark:text-white" id="modal-title">Add New Address</h3>
+<div class="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
+<div class="sm:col-span-6">
+<label class="block text-sm font-medium text-gray-700 dark:text-gray-300" for="address-label">Address Label (e.g. Home, Office)</label>
+<div class="mt-1">
+<input class="shadow-sm focus:ring-primary focus:border-primary block w-full sm:text-sm border-gray-300 rounded-md dark:bg-gray-800 dark:border-gray-600 dark:text-white p-2 border" id="address-label" name="address-label" type="text"/>
+</div>
+</div>
+<div class="sm:col-span-3">
+<label class="block text-sm font-medium text-gray-700 dark:text-gray-300" for="first-name">First name</label>
+<div class="mt-1">
+<input autocomplete="given-name" class="shadow-sm focus:ring-primary focus:border-primary block w-full sm:text-sm border-gray-300 rounded-md dark:bg-gray-800 dark:border-gray-600 dark:text-white p-2 border" id="first-name" name="first-name" type="text"/>
+</div>
+</div>
+<div class="sm:col-span-3">
+<label class="block text-sm font-medium text-gray-700 dark:text-gray-300" for="last-name">Last name</label>
+<div class="mt-1">
+<input autocomplete="family-name" class="shadow-sm focus:ring-primary focus:border-primary block w-full sm:text-sm border-gray-300 rounded-md dark:bg-gray-800 dark:border-gray-600 dark:text-white p-2 border" id="last-name" name="last-name" type="text"/>
+</div>
+</div>
+<div class="sm:col-span-6">
+<label class="block text-sm font-medium text-gray-700 dark:text-gray-300" for="street-address">Street address</label>
+<div class="mt-1">
+<input autocomplete="street-address" class="shadow-sm focus:ring-primary focus:border-primary block w-full sm:text-sm border-gray-300 rounded-md dark:bg-gray-800 dark:border-gray-600 dark:text-white p-2 border" id="street-address" name="street-address" type="text"/>
+</div>
+</div>
+<div class="sm:col-span-2">
+<label class="block text-sm font-medium text-gray-700 dark:text-gray-300" for="city">City</label>
+<div class="mt-1">
+<input autocomplete="address-level2" class="shadow-sm focus:ring-primary focus:border-primary block w-full sm:text-sm border-gray-300 rounded-md dark:bg-gray-800 dark:border-gray-600 dark:text-white p-2 border" id="city" name="city" type="text"/>
+</div>
+</div>
+<div class="sm:col-span-2">
+<label class="block text-sm font-medium text-gray-700 dark:text-gray-300" for="region">State / Province</label>
+<div class="mt-1">
+<input autocomplete="address-level1" class="shadow-sm focus:ring-primary focus:border-primary block w-full sm:text-sm border-gray-300 rounded-md dark:bg-gray-800 dark:border-gray-600 dark:text-white p-2 border" id="region" name="region" type="text"/>
+</div>
+</div>
+<div class="sm:col-span-2">
+<label class="block text-sm font-medium text-gray-700 dark:text-gray-300" for="postal-code">ZIP / Postal code</label>
+<div class="mt-1">
+<input autocomplete="postal-code" class="shadow-sm focus:ring-primary focus:border-primary block w-full sm:text-sm border-gray-300 rounded-md dark:bg-gray-800 dark:border-gray-600 dark:text-white p-2 border" id="postal-code" name="postal-code" type="text"/>
+</div>
+</div>
+<div class="sm:col-span-6 flex items-center">
+<input class="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded" id="make-default" name="make-default" type="checkbox"/>
+<label class="ml-2 block text-sm text-gray-900 dark:text-gray-300" for="make-default">
+                                Set as default address
+                            </label>
+</div>
+</div>
+</div>
+<div class="mt-8 sm:grid sm:grid-cols-2 sm:gap-3 sm:grid-flow-row-dense">
+<button class="w-full inline-flex justify-center rounded-lg border border-transparent shadow-sm px-4 py-2 bg-primary text-base font-medium text-white hover:bg-primary-hover focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary sm:col-start-2 sm:text-sm" type="button">
+                        Save Address
+                    </button>
+<button class="mt-3 w-full inline-flex justify-center rounded-lg border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary sm:mt-0 sm:col-start-1 sm:text-sm dark:bg-gray-800 dark:text-gray-200 dark:border-gray-600 dark:hover:bg-gray-700" type="button">
+                        Cancel
+                    </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer -->
+<footer class="bg-white dark:bg-neutral-surface-dark border-t border-gray-200 dark:border-gray-800 mt-auto">
+<div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 md:flex md:items-center md:justify-between lg:px-8">
+<div class="flex justify-center space-x-6 md:order-2">
+<a class="text-gray-400 hover:text-gray-500" href="#">
+<span class="sr-only">Facebook</span>
+<svg aria-hidden="true" class="h-6 w-6" fill="currentColor" viewbox="0 0 24 24">
+<path clip-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" fill-rule="evenodd"></path>
+</svg>
+</a>
+<a class="text-gray-400 hover:text-gray-500" href="#">
+<span class="sr-only">Instagram</span>
+<svg aria-hidden="true" class="h-6 w-6" fill="currentColor" viewbox="0 0 24 24">
+<path clip-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772 4.902 4.902 0 011.772-1.153c.636-.247 1.363-.416 2.427-.465 1.067-.047 1.409-.06 3.809-.06zM12 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zm0 10.162a3.999 3.999 0 110-8 3.999 3.999 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" fill-rule="evenodd"></path>
+</svg>
+</a>
+</div>
+<div class="mt-8 md:mt-0 md:order-1">
+<p class="text-center text-base text-gray-400">© 2023 ArtisanKraft Inc. All rights reserved.</p>
+</div>
+</div>
+</footer>
+</body></html>

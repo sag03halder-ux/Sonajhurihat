@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Vendor Product Manager</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ec6d13",
+                        "primary-dark": "#d55e0f",
+                        "background-light": "#f8f7f6",
+                        "background-dark": "#221810",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#2d2016",
+                        "border-light": "#e5e7eb",
+                        "border-dark": "#3d3024",
+                    },
+                    fontFamily: {
+                        "display": ["Work Sans", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-gray-800 dark:text-gray-100 min-h-screen flex flex-col md:flex-row transition-colors duration-200">
+<!-- Sidebar Navigation -->
+<aside class="w-full md:w-64 bg-surface-light dark:bg-surface-dark border-r border-border-light dark:border-border-dark flex-shrink-0 hidden md:flex flex-col h-screen fixed top-0 left-0 z-30">
+<div class="p-6 flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-primary flex items-center justify-center text-white">
+<span class="material-icons">storefront</span>
+</div>
+<span class="text-xl font-bold tracking-tight text-gray-900 dark:text-white">ArtisanHub</span>
+</div>
+<nav class="flex-1 px-4 space-y-2 mt-4">
+<a class="flex items-center gap-3 px-4 py-3 text-gray-600 dark:text-gray-400 hover:bg-primary/10 hover:text-primary rounded-lg transition-colors" href="#">
+<span class="material-icons">dashboard</span>
+<span class="font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-gray-600 dark:text-gray-400 hover:bg-primary/10 hover:text-primary rounded-lg transition-colors" href="#">
+<span class="material-icons">shopping_bag</span>
+<span class="font-medium">Orders</span>
+<span class="ml-auto bg-primary/20 text-primary text-xs font-bold px-2 py-0.5 rounded-full">3</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 bg-primary/10 text-primary rounded-lg transition-colors border-l-4 border-primary" href="#">
+<span class="material-icons">inventory_2</span>
+<span class="font-medium">Products</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-gray-600 dark:text-gray-400 hover:bg-primary/10 hover:text-primary rounded-lg transition-colors" href="#">
+<span class="material-icons">analytics</span>
+<span class="font-medium">Analytics</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-gray-600 dark:text-gray-400 hover:bg-primary/10 hover:text-primary rounded-lg transition-colors" href="#">
+<span class="material-icons">settings</span>
+<span class="font-medium">Settings</span>
+</a>
+</nav>
+<div class="p-4 border-t border-border-light dark:border-border-dark">
+<div class="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 cursor-pointer">
+<img alt="Profile" class="w-10 h-10 rounded-full object-cover border border-gray-200 dark:border-gray-700" data-alt="Portrait of vendor shop owner" src="https://lh3.googleusercontent.com/aida-public/AB6AXuABZNh-moibd6e7EvJaIcsGvBlREU6E4gOj1mPZFe94ehhIQL3YwD63q1oSdp3UjnR5jtT3XZGOCG4NEEsrIjdG0_7Kz8G9KingYC5U2aSEVLL5h47OcfwWubCQAtL7OOYRLrISxuy8xF22PhiaNrPaH64zpebGPyBBtMgIHlqh7zl-ojlVeAhUPuSouGQRxKsl6YNz3YVeL_amkS50ycHBdeNN_jf5Ur54ifjMDT0aQkkREfbrNO5HSkUuJxmYpDOlVO4ta53i8LLG"/>
+<div>
+<p class="text-sm font-semibold text-gray-900 dark:text-white">Elena Woods</p>
+<p class="text-xs text-gray-500 dark:text-gray-400">Woodcraft Shop</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 md:ml-64 p-6 md:p-8 lg:p-12 overflow-x-hidden">
+<!-- Header Section -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8">
+<div>
+<h1 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-2">Product Manager</h1>
+<p class="text-gray-500 dark:text-gray-400 text-sm">Manage your inventory, pricing, and stock levels.</p>
+</div>
+<div class="flex items-center gap-3">
+<button class="flex items-center gap-2 bg-surface-light dark:bg-surface-dark border border-border-light dark:border-border-dark text-gray-700 dark:text-gray-200 px-4 py-2.5 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors shadow-sm">
+<span class="material-icons text-xl">file_download</span>
+<span class="hidden sm:inline font-medium">Export</span>
+</button>
+<button class="flex items-center gap-2 bg-primary hover:bg-primary-dark text-white px-5 py-2.5 rounded-lg transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
+<span class="material-icons text-xl">add</span>
+<span class="font-bold">Add Product</span>
+</button>
+</div>
+</div>
+<!-- Metric Cards -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+<div class="bg-surface-light dark:bg-surface-dark p-6 rounded-xl shadow-sm border border-border-light dark:border-border-dark flex items-start justify-between">
+<div>
+<p class="text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">Total Products</p>
+<h3 class="text-3xl font-bold text-gray-900 dark:text-white">124</h3>
+</div>
+<div class="p-3 bg-primary/10 rounded-lg text-primary">
+<span class="material-icons">inventory</span>
+</div>
+</div>
+<div class="bg-surface-light dark:bg-surface-dark p-6 rounded-xl shadow-sm border border-border-light dark:border-border-dark flex items-start justify-between">
+<div>
+<p class="text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">Low Stock Items</p>
+<h3 class="text-3xl font-bold text-red-500">8</h3>
+</div>
+<div class="p-3 bg-red-100 dark:bg-red-900/20 rounded-lg text-red-500">
+<span class="material-icons">warning</span>
+</div>
+</div>
+<div class="bg-surface-light dark:bg-surface-dark p-6 rounded-xl shadow-sm border border-border-light dark:border-border-dark flex items-start justify-between">
+<div>
+<p class="text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">Active Listings</p>
+<h3 class="text-3xl font-bold text-green-600 dark:text-green-500">112</h3>
+</div>
+<div class="p-3 bg-green-100 dark:bg-green-900/20 rounded-lg text-green-600 dark:text-green-500">
+<span class="material-icons">visibility</span>
+</div>
+</div>
+</div>
+<!-- Filters & Table Container -->
+<div class="bg-surface-light dark:bg-surface-dark border border-border-light dark:border-border-dark rounded-xl shadow-sm overflow-hidden">
+<!-- Filter Bar -->
+<div class="p-5 border-b border-border-light dark:border-border-dark flex flex-col md:flex-row gap-4 justify-between items-center">
+<div class="relative w-full md:w-96">
+<span class="material-icons absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">search</span>
+<input class="w-full pl-10 pr-4 py-2.5 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all" placeholder="Search products by name, SKU..." type="text"/>
+</div>
+<div class="flex w-full md:w-auto gap-3 overflow-x-auto pb-2 md:pb-0">
+<select class="px-4 py-2.5 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-primary">
+<option>All Categories</option>
+<option>Ceramics</option>
+<option>Textiles</option>
+<option>Woodwork</option>
+</select>
+<select class="px-4 py-2.5 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-primary">
+<option>Status: All</option>
+<option>Active</option>
+<option>Draft</option>
+<option>Archived</option>
+</select>
+</div>
+</div>
+<!-- Table -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-gray-50 dark:bg-gray-800/50 border-b border-border-light dark:border-border-dark text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 font-semibold">
+<th class="p-4 w-10 text-center">
+<input class="rounded border-gray-300 text-primary focus:ring-primary bg-gray-100 dark:bg-gray-700" type="checkbox"/>
+</th>
+<th class="p-4">Product</th>
+<th class="p-4">SKU</th>
+<th class="p-4">Price</th>
+<th class="p-4">Stock</th>
+<th class="p-4">Status</th>
+<th class="p-4">Last Updated</th>
+<th class="p-4 text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-border-light dark:divide-border-dark">
+<!-- Row 1 -->
+<tr class="hover:bg-gray-50 dark:hover:bg-gray-800/30 transition-colors group">
+<td class="p-4 text-center">
+<input class="rounded border-gray-300 text-primary focus:ring-primary bg-gray-100 dark:bg-gray-700" type="checkbox"/>
+</td>
+<td class="p-4">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-gray-200 overflow-hidden flex-shrink-0">
+<img alt="Product" class="w-full h-full object-cover" data-alt="Hand-woven Bamboo Basket texture detail" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFeAlMEw9jPztOOObLW4__LF4VL2Lt3TIUegQEKm5TPgpzOG3c5hmkSjxFK6ecWcBh7W2VLvAY4EUj8_YVr49RhZhj-auZJAJyap6zJDsh8YMoZALUAB5FSQxcQLmiXXzeptrvAm_JhJKeAUhTiMNoirmeCP5JLrkGZE1velCx8-rZkwsAVXth2JLQ_bl4GE2Fq5y56YtMwV1NvdVUKCxrLt-vAChrtIKCH1_iaLfljlkbSwe3ph8lwT7jBNfg3vDmm8J08FjK0FmY"/>
+</div>
+<div>
+<div class="font-bold text-gray-900 dark:text-white">Hand-woven Bamboo Basket</div>
+<div class="text-xs text-gray-500">Home Decor</div>
+</div>
+</div>
+</td>
+<td class="p-4 text-sm text-gray-600 dark:text-gray-300">BMB-001</td>
+<td class="p-4 font-medium text-gray-900 dark:text-white">$45.00</td>
+<td class="p-4">
+<span class="text-sm text-gray-600 dark:text-gray-300">12 in stock</span>
+</td>
+<td class="p-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400 border border-green-200 dark:border-green-800">
+                                    Active
+                                </span>
+</td>
+<td class="p-4 text-sm text-gray-500">Oct 24, 2023</td>
+<td class="p-4 text-right">
+<div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 text-gray-500 hover:text-primary hover:bg-primary/10 rounded-lg transition-colors" title="Edit">
+<span class="material-icons text-xl">edit</span>
+</button>
+<button class="p-2 text-gray-500 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-colors" title="Delete">
+<span class="material-icons text-xl">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-gray-50 dark:hover:bg-gray-800/30 transition-colors group">
+<td class="p-4 text-center">
+<input class="rounded border-gray-300 text-primary focus:ring-primary bg-gray-100 dark:bg-gray-700" type="checkbox"/>
+</td>
+<td class="p-4">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-gray-200 overflow-hidden flex-shrink-0">
+<img alt="Product" class="w-full h-full object-cover" data-alt="Ceramic Flower Vase close up texture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKPHcbJniOrC4cdPJrphzsKDZPoeY4I5IrtBqqdBp5qQqCU8NIZw4d3XFSbkmsPIy8HJzDRVNoBt9sDrvW-r0gSIn6DEi6mc5xKA4n47gIOJCvOh7H1O8umatviafd3FKRCOCVQXSbjzmQWrqZ_U9O34i2fsWi8tDXlyvScTsSfsGjthjAe85YXkEaJ_dyn_hov7Tl4Bv1mjPNWaldHCxEVHWj5sIFbREq1aq5vebYnL-mPdkVLb9ZsFXCnELG1fSumaQMZwnNMXP1"/>
+</div>
+<div>
+<div class="font-bold text-gray-900 dark:text-white">Ceramic Flower Vase</div>
+<div class="text-xs text-gray-500">Pottery</div>
+</div>
+</div>
+</td>
+<td class="p-4 text-sm text-gray-600 dark:text-gray-300">CER-045</td>
+<td class="p-4 font-medium text-gray-900 dark:text-white">$120.00</td>
+<td class="p-4">
+<div class="flex items-center gap-2">
+<span class="text-sm font-medium text-red-500">0 in stock</span>
+<span class="material-icons text-red-500 text-sm" title="Out of stock">error_outline</span>
+</div>
+</td>
+<td class="p-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary/10 text-primary border border-primary/20">
+                                    Draft
+                                </span>
+</td>
+<td class="p-4 text-sm text-gray-500">2 hours ago</td>
+<td class="p-4 text-right">
+<div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 text-gray-500 hover:text-primary hover:bg-primary/10 rounded-lg transition-colors" title="Edit">
+<span class="material-icons text-xl">edit</span>
+</button>
+<button class="p-2 text-gray-500 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-colors" title="Delete">
+<span class="material-icons text-xl">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-gray-50 dark:hover:bg-gray-800/30 transition-colors group">
+<td class="p-4 text-center">
+<input class="rounded border-gray-300 text-primary focus:ring-primary bg-gray-100 dark:bg-gray-700" type="checkbox"/>
+</td>
+<td class="p-4">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-gray-200 overflow-hidden flex-shrink-0">
+<img alt="Product" class="w-full h-full object-cover" data-alt="Handknitted Wool Scarf folded texture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_0-ncK2du_89JiZov1kXDeWlBnKzDesRxG3_InGRaL9Rb7-_quX-zBmgwzpwUJ8MOImkr8x-8vVfEudAumGnlthmqflPzJpz19vNRrPT06scjlK297lVw3WJIN6Iy4zsdMTWmbHlvqm8S6A2cexz_FR1_PI-3KlHxmtcCxYK1eUOM2yqhVlBev1Ww01Mgf7ysB0lGH-2W-GoxdhWEtRCeFhVdwB1rE4J9vfM9HDOWqU4PImvnXS30KYeuo9bGl_X9AYw0sTWuPmJH"/>
+</div>
+<div>
+<div class="font-bold text-gray-900 dark:text-white">Merino Wool Scarf</div>
+<div class="text-xs text-gray-500">Textiles</div>
+</div>
+</div>
+</td>
+<td class="p-4 text-sm text-gray-600 dark:text-gray-300">TXT-892</td>
+<td class="p-4 font-medium text-gray-900 dark:text-white">$85.00</td>
+<td class="p-4">
+<span class="text-sm text-orange-600 font-medium">3 in stock</span>
+</td>
+<td class="p-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400 border border-green-200 dark:border-green-800">
+                                    Active
+                                </span>
+</td>
+<td class="p-4 text-sm text-gray-500">Yesterday</td>
+<td class="p-4 text-right">
+<div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 text-gray-500 hover:text-primary hover:bg-primary/10 rounded-lg transition-colors" title="Edit">
+<span class="material-icons text-xl">edit</span>
+</button>
+<button class="p-2 text-gray-500 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-colors" title="Delete">
+<span class="material-icons text-xl">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-gray-50 dark:hover:bg-gray-800/30 transition-colors group">
+<td class="p-4 text-center">
+<input class="rounded border-gray-300 text-primary focus:ring-primary bg-gray-100 dark:bg-gray-700" type="checkbox"/>
+</td>
+<td class="p-4">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-gray-200 overflow-hidden flex-shrink-0">
+<img alt="Product" class="w-full h-full object-cover" data-alt="Handcrafted Silver Ring jewelry detail" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPfdz5Msq2Byk8frLQUo3D2MVilFWkh0iGX0tCMXnyrHaGCRDVN2UR9OkkpRqZUKtx-9OLM2kGpKHZDQpGtOX-oVGDk4lVHtpZiF6RMEEsqt5b0Eqber9EjBJb1JpdUh4282eSLfoKKMnmRJq7SDCLjYPMJ13Y-OkVEs0oMlqPbdyDWmKmoCSJaouEQPUWh7YY_RSfa5v3Jiv6qvgj4-PEwNgThJFKreqVM9xNkk010Jg-XUmiwA_jUgwHDrOSFbliKQUKQ5JjyX4Q"/>
+</div>
+<div>
+<div class="font-bold text-gray-900 dark:text-white">Silver Leaf Ring</div>
+<div class="text-xs text-gray-500">Jewelry</div>
+</div>
+</div>
+</td>
+<td class="p-4 text-sm text-gray-600 dark:text-gray-300">JWL-220</td>
+<td class="p-4 font-medium text-gray-900 dark:text-white">$65.00</td>
+<td class="p-4">
+<span class="text-sm text-gray-600 dark:text-gray-300">25 in stock</span>
+</td>
+<td class="p-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400 border border-green-200 dark:border-green-800">
+                                    Active
+                                </span>
+</td>
+<td class="p-4 text-sm text-gray-500">Oct 20, 2023</td>
+<td class="p-4 text-right">
+<div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 text-gray-500 hover:text-primary hover:bg-primary/10 rounded-lg transition-colors" title="Edit">
+<span class="material-icons text-xl">edit</span>
+</button>
+<button class="p-2 text-gray-500 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-colors" title="Delete">
+<span class="material-icons text-xl">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-gray-50 dark:hover:bg-gray-800/30 transition-colors group">
+<td class="p-4 text-center">
+<input class="rounded border-gray-300 text-primary focus:ring-primary bg-gray-100 dark:bg-gray-700" type="checkbox"/>
+</td>
+<td class="p-4">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-gray-200 overflow-hidden flex-shrink-0">
+<img alt="Product" class="w-full h-full object-cover" data-alt="Abstract hand painted wood texture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwPdFTegWr_z8DsI-e2B0sOyu4htCWpIcvSHC-PaneMShIkgORyaYdcr15TNC7jHnvzXAtytsZ1-DBh_A0r0YrBHI0a2FMzdgN0FNmtbOwSCbzzCcttq-ajY3WLmTjn9SEEGmYhM7vAHFi3BZixwU6zXYqsZpW6iTN1a-Hk7gP1R2PO3krSX-BaeTwSf1Xgr6D0zc3fw_8q_zP3Qo3lUESHAelGzH958A-SDJMp9Ebd6M10cru12NcarJXyNPeHaTcTyn-dj3j1vdn"/>
+</div>
+<div>
+<div class="font-bold text-gray-900 dark:text-white">Oak Serving Board</div>
+<div class="text-xs text-gray-500">Woodwork</div>
+</div>
+</div>
+</td>
+<td class="p-4 text-sm text-gray-600 dark:text-gray-300">WDK-101</td>
+<td class="p-4 font-medium text-gray-900 dark:text-white">$55.00</td>
+<td class="p-4">
+<span class="text-sm text-gray-600 dark:text-gray-300">8 in stock</span>
+</td>
+<td class="p-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary/10 text-primary border border-primary/20">
+                                    Draft
+                                </span>
+</td>
+<td class="p-4 text-sm text-gray-500">Oct 18, 2023</td>
+<td class="p-4 text-right">
+<div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 text-gray-500 hover:text-primary hover:bg-primary/10 rounded-lg transition-colors" title="Edit">
+<span class="material-icons text-xl">edit</span>
+</button>
+<button class="p-2 text-gray-500 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-colors" title="Delete">
+<span class="material-icons text-xl">delete</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="border-t border-border-light dark:border-border-dark p-4 flex items-center justify-between">
+<div class="text-sm text-gray-500 dark:text-gray-400 hidden sm:block">
+                    Showing <span class="font-medium text-gray-900 dark:text-white">1</span> to <span class="font-medium text-gray-900 dark:text-white">5</span> of <span class="font-medium text-gray-900 dark:text-white">124</span> results
+                </div>
+<div class="flex items-center gap-2">
+<button class="p-2 rounded-lg border border-gray-300 dark:border-gray-600 text-gray-500 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 disabled:opacity-50">
+<span class="material-icons text-base">chevron_left</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg bg-primary text-white text-sm font-medium">1</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg border border-gray-300 dark:border-gray-600 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 text-sm font-medium">2</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg border border-gray-300 dark:border-gray-600 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 text-sm font-medium hidden sm:flex">3</button>
+<span class="text-gray-400 hidden sm:block">...</span>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg border border-gray-300 dark:border-gray-600 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 text-sm font-medium hidden sm:flex">12</button>
+<button class="p-2 rounded-lg border border-gray-300 dark:border-gray-600 text-gray-500 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800">
+<span class="material-icons text-base">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+</body></html>

@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Order Confirmation - Artisan Market</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#ec6d13",
+              "primary-dark": "#d55f0e",
+              "background-light": "#f8f7f6",
+              "background-dark": "#221810",
+              "surface-light": "#ffffff",
+              "surface-dark": "#2d211a",
+              "text-main-light": "#221810",
+              "text-main-dark": "#f8f7f6",
+              "text-muted-light": "#6b5d52",
+              "text-muted-dark": "#a89b92",
+            },
+            fontFamily: {
+              "display": ["Work Sans", "sans-serif"]
+            },
+            borderRadius: {
+              "DEFAULT": "0.25rem", 
+              "lg": "0.5rem", 
+              "xl": "0.75rem", 
+              "2xl": "1rem",
+              "full": "9999px"
+            },
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            font-family: 'Work Sans', sans-serif;
+        }
+        /* Custom pattern for background */
+        .bg-pattern {
+            background-color: #f8f7f6;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ec6d13' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        .dark .bg-pattern {
+            background-color: #221810;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ec6d13' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-text-main-light dark:text-text-main-dark antialiased min-h-screen flex flex-col">
+<!-- Navigation -->
+<nav class="sticky top-0 z-50 bg-surface-light/90 dark:bg-surface-dark/90 backdrop-blur-md border-b border-primary/10 dark:border-primary/20">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between items-center h-16">
+<!-- Logo -->
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-white font-bold text-lg">A</div>
+<span class="font-bold text-xl tracking-tight text-primary dark:text-white">Artisan</span>
+</div>
+<!-- Desktop Menu -->
+<div class="hidden md:flex items-center space-x-8">
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Shop</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Stories</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">About</a>
+</div>
+<!-- Icons -->
+<div class="flex items-center gap-4">
+<button class="p-2 rounded-full hover:bg-primary/10 transition-colors">
+<span class="material-icons text-xl">person_outline</span>
+</button>
+<button class="p-2 rounded-full hover:bg-primary/10 transition-colors relative">
+<span class="material-icons text-xl">shopping_bag</span>
+</button>
+</div>
+</div>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="flex-grow bg-pattern py-12 px-4 sm:px-6 lg:px-8">
+<div class="max-w-4xl mx-auto">
+<!-- Success Header -->
+<div class="text-center mb-12 animate-fade-in-up">
+<div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-primary/10 dark:bg-primary/20 mb-6 relative">
+<span class="material-icons text-5xl text-primary">check_circle</span>
+<div class="absolute inset-0 rounded-full border border-primary/20 animate-ping opacity-75"></div>
+</div>
+<h1 class="text-4xl font-bold mb-4 tracking-tight">Order Confirmed!</h1>
+<p class="text-lg text-text-muted-light dark:text-text-muted-dark max-w-lg mx-auto">
+                    Thank you, <span class="font-semibold text-primary">Elena</span>. We've received your order and the artisans are getting it ready.
+                </p>
+<div class="mt-4 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-surface-light dark:bg-surface-dark border border-primary/10 shadow-sm text-sm font-medium">
+<span class="text-text-muted-light dark:text-text-muted-dark">Order ID:</span>
+<span class="font-mono text-primary">#ORD-8923</span>
+</div>
+</div>
+<!-- Content Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Left Column: Order Details & Tracking -->
+<div class="lg:col-span-2 space-y-6">
+<!-- Delivery Status Card -->
+<div class="bg-surface-light dark:bg-surface-dark rounded-xl shadow-sm border border-primary/10 overflow-hidden">
+<div class="p-6 border-b border-primary/5">
+<h2 class="text-lg font-semibold flex items-center gap-2">
+<span class="material-icons text-primary text-xl">local_shipping</span>
+                                Delivery Estimate
+                            </h2>
+</div>
+<div class="p-6">
+<div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
+<div>
+<p class="text-3xl font-bold text-primary">Oct 30 - Nov 2</p>
+<p class="text-sm text-text-muted-light dark:text-text-muted-dark mt-1">Estimated arrival date</p>
+</div>
+<button class="w-full sm:w-auto px-6 py-3 bg-primary hover:bg-primary-dark text-white rounded-lg font-medium transition-colors shadow-lg shadow-primary/20 flex items-center justify-center gap-2">
+                                    Track Your Order
+                                    <span class="material-icons text-sm">arrow_forward</span>
+</button>
+</div>
+<!-- Progress Bar -->
+<div class="relative mb-2">
+<div class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-primary/10">
+<div class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-primary rounded" style="width: 25%"></div>
+</div>
+<div class="flex justify-between text-xs font-medium text-text-muted-light dark:text-text-muted-dark">
+<div class="text-primary font-bold">Confirmed</div>
+<div class="text-center">Processing</div>
+<div class="text-center">Shipped</div>
+<div class="text-right">Delivered</div>
+</div>
+</div>
+</div>
+<!-- Shipping Address -->
+<div class="bg-background-light dark:bg-background-dark p-6 border-t border-primary/5">
+<h3 class="text-sm font-semibold uppercase tracking-wider text-text-muted-light dark:text-text-muted-dark mb-3">Shipping To</h3>
+<div class="flex items-start gap-3">
+<span class="material-icons text-primary/60 mt-1">place</span>
+<div>
+<p class="font-medium">Elena Rodriguez</p>
+<p class="text-text-muted-light dark:text-text-muted-dark">452 Artisan Way, Studio 8B</p>
+<p class="text-text-muted-light dark:text-text-muted-dark">Portland, OR 97204, United States</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Purchased Items -->
+<div class="bg-surface-light dark:bg-surface-dark rounded-xl shadow-sm border border-primary/10 overflow-hidden">
+<div class="p-6 border-b border-primary/5">
+<h2 class="text-lg font-semibold">Items in Your Order (3)</h2>
+</div>
+<ul class="divide-y divide-primary/5">
+<li class="p-6 flex flex-col sm:flex-row gap-4">
+<div class="w-24 h-24 flex-shrink-0 bg-background-light dark:bg-background-dark rounded-lg overflow-hidden border border-primary/10 relative group">
+<img alt="Hand-woven seagrass basket on a table" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Woven basket texture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdI_I85NQKDpZLQTQ5uEZj0hKVBM5RKjV_fAJ8tIH2cIAIXOE0nfsnsnWLChjvUNkFKukM71PbkcKLNUvl8eYU9fPUHM8cL-gf-DDd_ina-TUg3KHRR1gvVBGk0uIyaf1zv9oLhG4FFDQDbj3hkjfu16t1QOYGUuLAonWvshxzkj3XpjMTr-8wvvDemwoprYn3r63NpuAL-Y-t7x_sjuzTEtpdSh1-_16GeE6MThc9_ZjbEg1dMnq7wCbZ4-zlDqowBHZffCkY7Ci5"/>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-medium text-lg">Woven Seagrass Basket</h3>
+<p class="text-sm text-text-muted-light dark:text-text-muted-dark">Variant: Large, Natural</p>
+<p class="text-sm text-primary mt-1">Artisan: Sofia M.</p>
+</div>
+<p class="font-semibold">$45.00</p>
+</div>
+<div class="mt-2 text-sm text-text-muted-light dark:text-text-muted-dark">Qty: 1</div>
+</div>
+</li>
+<li class="p-6 flex flex-col sm:flex-row gap-4">
+<div class="w-24 h-24 flex-shrink-0 bg-background-light dark:bg-background-dark rounded-lg overflow-hidden border border-primary/10 relative group">
+<img alt="Ceramic clay vase with minimal design" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Handmade ceramic vase" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGFvdnjuS1CFziFyYmQTcPkVMHq1tDfgmna3_rXSa2pHiuMs76KZ7DVmwq9mTbZ9arjfnkUCp1bI9G_8rj7n880L5AD3dVUWTDm0SbWMg0GCXNT_PxfkUHL-BbAwvDw7lyLcaJLDoTDN_uJHxDtya50fVDAnKIpoPTAKgS2eA_ZZI_DfLOqPaqle_-HsQmDF3FBSrNoFKrwIupWC_5LD8m2BpIpG1G2Y-uKqY1etd7IZzbyUyFKOJNtEaozk57YC08Wh-423XsD41v"/>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-medium text-lg">Minimalist Clay Vase</h3>
+<p class="text-sm text-text-muted-light dark:text-text-muted-dark">Variant: Terracotta</p>
+<p class="text-sm text-primary mt-1">Artisan: Kai T.</p>
+</div>
+<p class="font-semibold">$32.00</p>
+</div>
+<div class="mt-2 text-sm text-text-muted-light dark:text-text-muted-dark">Qty: 2</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<!-- Right Column: Summary & Payment -->
+<div class="lg:col-span-1 space-y-6">
+<!-- Order Summary -->
+<div class="bg-surface-light dark:bg-surface-dark rounded-xl shadow-sm border border-primary/10 p-6 sticky top-24">
+<h2 class="text-lg font-semibold mb-6">Order Summary</h2>
+<div class="space-y-3 text-sm pb-6 border-b border-primary/10">
+<div class="flex justify-between text-text-muted-light dark:text-text-muted-dark">
+<span>Subtotal</span>
+<span>$109.00</span>
+</div>
+<div class="flex justify-between text-text-muted-light dark:text-text-muted-dark">
+<span>Shipping (Standard)</span>
+<span>$12.00</span>
+</div>
+<div class="flex justify-between text-text-muted-light dark:text-text-muted-dark">
+<span>Tax</span>
+<span>$8.72</span>
+</div>
+<div class="flex justify-between text-primary font-medium">
+<span>Discount (WELCOME10)</span>
+<span>-$10.90</span>
+</div>
+</div>
+<div class="flex justify-between items-center py-6 font-bold text-xl">
+<span>Total</span>
+<span>$118.82</span>
+</div>
+<div class="space-y-4">
+<div class="bg-background-light dark:bg-background-dark p-4 rounded-lg border border-primary/5 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-icons text-text-muted-light dark:text-text-muted-dark">credit_card</span>
+<div>
+<p class="font-medium text-sm">Visa ending in 4242</p>
+<p class="text-xs text-text-muted-light dark:text-text-muted-dark">Exp 12/25</p>
+</div>
+</div>
+</div>
+<a class="block w-full text-center py-3 border border-primary/20 text-primary hover:bg-primary/5 rounded-lg font-medium transition-colors text-sm" href="#">
+                                Download Invoice
+                            </a>
+<a class="block w-full text-center py-3 text-text-muted-light hover:text-primary transition-colors text-sm underline decoration-primary/30 underline-offset-4" href="#">
+                                Continue Shopping
+                            </a>
+</div>
+</div>
+<!-- Need Help? -->
+<div class="bg-primary/5 dark:bg-primary/10 rounded-xl p-6 text-center border border-primary/10">
+<h3 class="font-semibold mb-2 text-primary">Need Help?</h3>
+<p class="text-sm text-text-muted-light dark:text-text-muted-dark mb-4">
+                            Questions about your handmade goods? We're here.
+                        </p>
+<a class="text-sm font-medium hover:underline text-primary" href="#">Contact Support</a>
+</div>
+</div>
+</div>
+<!-- You Might Also Like (Subtle) -->
+<div class="mt-16 pt-12 border-t border-primary/10">
+<h3 class="text-xl font-bold mb-6">Hand-Picked for You</h3>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Suggestion 1 -->
+<div class="group cursor-pointer">
+<div class="aspect-square bg-surface-light dark:bg-surface-dark rounded-lg overflow-hidden mb-3 border border-primary/5">
+<img alt="Hand-carved wooden spoon set" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Wooden spoons on cloth" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAzdCNMQUgFkfS8ET1VQavzs_bUrEBKr4Tsrnky96U0yb60g_bfpMpepmx4xFYfTKNf_vBOYg2k7dabta-ZuZ5vJJc5fWnzCtmpmHxhlKujeLDRzqDg3QNawhhoGtLJCFWqnPNMO5LN6LjCch9tJfP0wSb9vROjgh7lvIcvTnCxAJEbUc3Yl31h8a-tsZt3xUnvohszz24ji0Rhk1abHnFMttYafRC-hq6ofjz5rUCYDoGh9XfsIwzjG7uSpqQtx8WqyHA-r0OP0f_N"/>
+</div>
+<h4 class="font-medium group-hover:text-primary transition-colors">Olive Wood Spoons</h4>
+<p class="text-sm text-text-muted-light dark:text-text-muted-dark">$24.00</p>
+</div>
+<!-- Suggestion 2 -->
+<div class="group cursor-pointer">
+<div class="aspect-square bg-surface-light dark:bg-surface-dark rounded-lg overflow-hidden mb-3 border border-primary/5">
+<img alt="Knitted wool throw blanket" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Soft knit blanket texture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA73PuGNn1FUtacIW0LMXOIiSDW5lThe_E9w_H7R9yV7dQ2DlkOnt2voK-9bEz7xv56-Jjsl_jP-lK9K7ROqQfYylzZy3IkoR5xECuEtiGrbVrLmEpZZFBpRuqrbaqne32PwNBYu-FWtAkoor_E9VEg80RYV_F5yk3BvhIdsD_T0gx0hUpkmC_STddchDi7-BmAkqJREKttb6IzUh7Xgd4k8isMY9u7hc2F52WYbvSXhBdk4_1MRkz3BWvKnipG8zjthvAHhoG4gR4G"/>
+</div>
+<h4 class="font-medium group-hover:text-primary transition-colors">Alpaca Wool Throw</h4>
+<p class="text-sm text-text-muted-light dark:text-text-muted-dark">$120.00</p>
+</div>
+<!-- Suggestion 3 -->
+<div class="group cursor-pointer">
+<div class="aspect-square bg-surface-light dark:bg-surface-dark rounded-lg overflow-hidden mb-3 border border-primary/5">
+<img alt="Handmade scented soy candle" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Minimalist candle jar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC11HhoOT2_dSFlEMOlvaH3b5iuYbM_cMwsbEB2mNB0tDJe_uUXP17k2luFPxix0rjHtgbW7QF6V_pUC-4BaxqKsBE3g4cITb-X2edz6gOS2h_Jgl1GDWCWdBb3JmsmO8_H0zv0tlHIiwWK5mkihZpR7NezIEUNicXtsvO2E7Y-myzG3fK4mgNrErcH4G8n1CuHwuVI5DYFqbWAIJikr0KjhRefABRztxu2sp0excdCbBPUHrdHDBZ8jdpD64v--XMPHG-mugqZzzlH"/>
+</div>
+<h4 class="font-medium group-hover:text-primary transition-colors">Botanical Soy Candle</h4>
+<p class="text-sm text-text-muted-light dark:text-text-muted-dark">$28.00</p>
+</div>
+<!-- Suggestion 4 -->
+<div class="group cursor-pointer">
+<div class="aspect-square bg-surface-light dark:bg-surface-dark rounded-lg overflow-hidden mb-3 border border-primary/5">
+<img alt="Macrame wall hanging decor" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Macrame knot pattern" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLYRSBx3lLI0pcgS85eajCxeX6wufwBX6trpl8_gqt8lOpuSABQUAkV_MOhB2oqDfy6NyyKjHTsqIPas-J2NhrIohvHhMs2OdGgTu0el9WrQ0h2UaespzbAWuYr8x1y-x1bTG1_wlwDQ_v0A0wy7ZR5BqmkTCS8OvXLIIP-OmOELx2WWt2wXKKJpum9WvIGid_XfiXUnPxP2BXIyAv-5dTrxZ_vMjlgrDAcBJC9uXRK6vIreWth-zs0i-8IXX3_gTH7PmdVthK_C0Y"/>
+</div>
+<h4 class="font-medium group-hover:text-primary transition-colors">Macrame Wall Hanging</h4>
+<p class="text-sm text-text-muted-light dark:text-text-muted-dark">$55.00</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-light dark:bg-surface-dark border-t border-primary/10 mt-auto">
+<div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+<div>
+<h5 class="text-sm font-bold uppercase tracking-wider mb-4 text-primary">Support</h5>
+<ul class="space-y-2 text-sm text-text-muted-light dark:text-text-muted-dark">
+<li><a class="hover:text-primary transition-colors" href="#">Order Status</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Shipping Info</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Returns &amp; Exchanges</a></li>
+</ul>
+</div>
+<div>
+<h5 class="text-sm font-bold uppercase tracking-wider mb-4 text-primary">Company</h5>
+<ul class="space-y-2 text-sm text-text-muted-light dark:text-text-muted-dark">
+<li><a class="hover:text-primary transition-colors" href="#">Our Story</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Artisans</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Careers</a></li>
+</ul>
+</div>
+<div class="col-span-2 md:col-span-2">
+<h5 class="text-sm font-bold uppercase tracking-wider mb-4 text-primary">Join the Community</h5>
+<p class="text-sm text-text-muted-light dark:text-text-muted-dark mb-4">Subscribe to receive updates on new artisans and seasonal collections.</p>
+<div class="flex gap-2">
+<input class="flex-1 bg-background-light dark:bg-background-dark border-primary/20 rounded-lg px-4 py-2 text-sm focus:ring-2 focus:ring-primary focus:border-transparent outline-none" placeholder="Enter your email" type="email"/>
+<button class="bg-primary hover:bg-primary-dark text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">Subscribe</button>
+</div>
+</div>
+</div>
+<div class="border-t border-primary/10 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-text-muted-light dark:text-text-muted-dark">
+<p>© 2023 Artisan Market. All rights reserved.</p>
+<div class="flex space-x-6 mt-4 md:mt-0">
+<a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-primary transition-colors" href="#">Terms of Service</a>
+</div>
+</div>
+</div>
+</footer>
+</body></html>

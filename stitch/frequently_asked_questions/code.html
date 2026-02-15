@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Frequently Asked Questions - Handicraft Store</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+            extend: {
+                colors: {
+                "primary": "#ec6d13",
+                "background-light": "#f8f7f6",
+                "background-dark": "#221810",
+                },
+                fontFamily: {
+                "display": ["Work Sans", "sans-serif"]
+                },
+                borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+            },
+            },
+        }
+    </script>
+<style>
+        /* Custom Accordion Transition */
+        details > summary {
+            list-style: none;
+        }
+        details > summary::-webkit-details-marker {
+            display: none;
+        }
+        details[open] summary ~ * {
+            animation: sweep .3s ease-in-out;
+        }
+        @keyframes sweep {
+            0%    {opacity: 0; transform: translateY(-10px)}
+            100%  {opacity: 1; transform: translateY(0)}
+        }
+        /* Rotates chevron when open */
+        details[open] summary .chevron {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-gray-800 dark:text-gray-100 antialiased min-h-screen flex flex-col">
+<!-- Navbar (Simplified Placeholder) -->
+<nav class="bg-white dark:bg-zinc-900 border-b border-gray-200 dark:border-zinc-800 sticky top-0 z-50">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-16">
+<div class="flex items-center">
+<span class="text-2xl font-bold text-primary tracking-tighter">Artisan<span class="text-gray-900 dark:text-white">Hub</span></span>
+</div>
+<div class="hidden sm:flex items-center space-x-8 text-sm font-medium text-gray-600 dark:text-gray-300">
+<a class="hover:text-primary transition-colors" href="#">Shop</a>
+<a class="hover:text-primary transition-colors" href="#">Artisans</a>
+<a class="hover:text-primary transition-colors" href="#">Blog</a>
+<a class="text-primary" href="#">Help</a>
+</div>
+<div class="flex items-center space-x-4">
+<span class="material-icons text-gray-500 hover:text-primary cursor-pointer">shopping_bag</span>
+<span class="material-icons text-gray-500 hover:text-primary cursor-pointer">person</span>
+</div>
+</div>
+</div>
+</nav>
+<!-- Main Content Wrapper -->
+<main class="flex-grow">
+<!-- Breadcrumbs -->
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+<nav aria-label="Breadcrumb" class="flex text-sm text-gray-500 dark:text-gray-400">
+<ol class="flex items-center space-x-2">
+<li><a class="hover:text-primary" href="#">Home</a></li>
+<li><span class="material-icons text-base">chevron_right</span></li>
+<li><a class="hover:text-primary" href="#">Help Center</a></li>
+<li><span class="material-icons text-base">chevron_right</span></li>
+<li class="font-medium text-gray-900 dark:text-white">FAQ</li>
+</ol>
+</nav>
+</div>
+<!-- Hero Section with Search -->
+<div class="relative bg-white dark:bg-zinc-900 shadow-sm border-b border-gray-200 dark:border-zinc-800 pb-16 pt-10 px-4 sm:px-6 lg:px-8 mb-10 overflow-hidden">
+<!-- Decorative background blob -->
+<div class="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 rounded-full bg-primary/10 blur-3xl pointer-events-none"></div>
+<div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-64 h-64 rounded-full bg-primary/5 blur-3xl pointer-events-none"></div>
+<div class="max-w-3xl mx-auto text-center relative z-10">
+<h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">How can we help you?</h1>
+<p class="text-lg text-gray-600 dark:text-gray-300 mb-8">Find answers to common questions about our handmade treasures.</p>
+<div class="relative max-w-2xl mx-auto">
+<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+<span class="material-icons text-gray-400 text-2xl">search</span>
+</div>
+<input class="block w-full pl-12 pr-4 py-4 border-2 border-transparent bg-background-light dark:bg-zinc-800 text-gray-900 dark:text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent rounded-lg shadow-sm transition-all text-lg" placeholder="Search for answers (e.g., shipping, artisan info)..." type="text"/>
+<button class="absolute right-2 top-2 bottom-2 bg-primary hover:bg-orange-600 text-white px-6 rounded-md font-medium transition-colors">
+                        Search
+                    </button>
+</div>
+</div>
+</div>
+<!-- Content Layout: Sidebar + FAQ List -->
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+<div class="lg:grid lg:grid-cols-12 lg:gap-12">
+<!-- Sidebar Categories -->
+<aside class="lg:col-span-3 mb-8 lg:mb-0">
+<nav class="space-y-1 sticky top-24">
+<h3 class="uppercase text-xs font-bold text-gray-400 dark:text-gray-500 tracking-wider mb-4 px-3">Categories</h3>
+<a aria-current="page" class="group flex items-center px-3 py-3 text-sm font-medium bg-primary/10 text-primary rounded-lg" href="#">
+<span class="material-icons text-lg mr-3">local_shipping</span>
+                            Shipping &amp; Delivery
+                        </a>
+<a class="group flex items-center px-3 py-3 text-sm font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-zinc-800 hover:text-gray-900 dark:hover:text-white rounded-lg transition-colors" href="#">
+<span class="material-icons text-lg mr-3 text-gray-400 group-hover:text-gray-500 dark:group-hover:text-gray-300">replay</span>
+                            Returns &amp; Exchanges
+                        </a>
+<a class="group flex items-center px-3 py-3 text-sm font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-zinc-800 hover:text-gray-900 dark:hover:text-white rounded-lg transition-colors" href="#">
+<span class="material-icons text-lg mr-3 text-gray-400 group-hover:text-gray-500 dark:group-hover:text-gray-300">brush</span>
+                            Artisan Information
+                        </a>
+<a class="group flex items-center px-3 py-3 text-sm font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-zinc-800 hover:text-gray-900 dark:hover:text-white rounded-lg transition-colors" href="#">
+<span class="material-icons text-lg mr-3 text-gray-400 group-hover:text-gray-500 dark:group-hover:text-gray-300">credit_card</span>
+                            Payments &amp; Billing
+                        </a>
+<a class="group flex items-center px-3 py-3 text-sm font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-zinc-800 hover:text-gray-900 dark:hover:text-white rounded-lg transition-colors" href="#">
+<span class="material-icons text-lg mr-3 text-gray-400 group-hover:text-gray-500 dark:group-hover:text-gray-300">eco</span>
+                            Sustainability
+                        </a>
+</nav>
+</aside>
+<!-- FAQ Content Area -->
+<div class="lg:col-span-9">
+<!-- Section: Shipping -->
+<div class="mb-12">
+<div class="flex items-center mb-6 border-b border-gray-200 dark:border-zinc-800 pb-2">
+<span class="material-icons text-primary mr-3 text-2xl">local_shipping</span>
+<h2 class="text-2xl font-bold text-gray-900 dark:text-white">Shipping &amp; Delivery</h2>
+</div>
+<div class="space-y-4">
+<!-- Question 1 -->
+<details class="group bg-white dark:bg-zinc-900 rounded-lg border border-gray-200 dark:border-zinc-800 overflow-hidden transition-all duration-300 hover:shadow-md" open="">
+<summary class="flex justify-between items-center cursor-pointer p-6 list-none">
+<h3 class="text-lg font-medium text-gray-900 dark:text-white pr-6">Do you ship internationally?</h3>
+<span class="transition group-open:rotate-180">
+<span class="material-icons text-primary chevron transition-transform duration-300">expand_more</span>
+</span>
+</summary>
+<div class="px-6 pb-6 text-gray-600 dark:text-gray-300 leading-relaxed">
+<p>Yes, we celebrate artisans from around the globe and ship their work worldwide! Please note that international shipping times vary by destination and local customs processing. Shipping costs are calculated at checkout based on weight and destination.</p>
+</div>
+</details>
+<!-- Question 2 -->
+<details class="group bg-white dark:bg-zinc-900 rounded-lg border border-gray-200 dark:border-zinc-800 overflow-hidden transition-all duration-300 hover:shadow-md">
+<summary class="flex justify-between items-center cursor-pointer p-6 list-none">
+<h3 class="text-lg font-medium text-gray-900 dark:text-white pr-6">How long will it take to receive my order?</h3>
+<span class="transition group-open:rotate-180">
+<span class="material-icons text-primary chevron transition-transform duration-300">expand_more</span>
+</span>
+</summary>
+<div class="px-6 pb-6 text-gray-600 dark:text-gray-300 leading-relaxed">
+<p class="mb-3">Because many of our items are made-to-order or ship directly from remote artisan workshops, delivery times can vary:</p>
+<ul class="list-disc pl-5 space-y-1">
+<li><strong>In-stock items:</strong> Ship within 1-3 business days.</li>
+<li><strong>Made-to-order items:</strong> Can take 1-2 weeks for creation before shipping.</li>
+</ul>
+<p class="mt-3">You will receive a tracking number as soon as your package is dispatched.</p>
+</div>
+</details>
+<!-- Question 3 -->
+<details class="group bg-white dark:bg-zinc-900 rounded-lg border border-gray-200 dark:border-zinc-800 overflow-hidden transition-all duration-300 hover:shadow-md">
+<summary class="flex justify-between items-center cursor-pointer p-6 list-none">
+<h3 class="text-lg font-medium text-gray-900 dark:text-white pr-6">My package is lost or damaged. What do I do?</h3>
+<span class="transition group-open:rotate-180">
+<span class="material-icons text-primary chevron transition-transform duration-300">expand_more</span>
+</span>
+</summary>
+<div class="px-6 pb-6 text-gray-600 dark:text-gray-300 leading-relaxed">
+<p>We are so sorry to hear that! Please contact our support team within 48 hours of receiving a damaged item with photos of the damage. If your package is lost in transit, let us know and we will work with the carrier to locate it or issue a replacement.</p>
+</div>
+</details>
+</div>
+</div>
+<!-- Section: Returns -->
+<div class="mb-12">
+<div class="flex items-center mb-6 border-b border-gray-200 dark:border-zinc-800 pb-2">
+<span class="material-icons text-primary mr-3 text-2xl">replay</span>
+<h2 class="text-2xl font-bold text-gray-900 dark:text-white">Returns &amp; Exchanges</h2>
+</div>
+<div class="space-y-4">
+<!-- Question 1 -->
+<details class="group bg-white dark:bg-zinc-900 rounded-lg border border-gray-200 dark:border-zinc-800 overflow-hidden transition-all duration-300 hover:shadow-md">
+<summary class="flex justify-between items-center cursor-pointer p-6 list-none">
+<h3 class="text-lg font-medium text-gray-900 dark:text-white pr-6">What is your return policy?</h3>
+<span class="transition group-open:rotate-180">
+<span class="material-icons text-primary chevron transition-transform duration-300">expand_more</span>
+</span>
+</summary>
+<div class="px-6 pb-6 text-gray-600 dark:text-gray-300 leading-relaxed">
+<p>We accept returns on most items within 30 days of delivery. Items must be unused and in original packaging. <br/><br/><strong>Note:</strong> Custom-made or personalized items are final sale unless they arrive damaged or defective, as these are created specifically for you.</p>
+</div>
+</details>
+</div>
+</div>
+<!-- Section: Artisan Information -->
+<div class="mb-12">
+<div class="flex items-center mb-6 border-b border-gray-200 dark:border-zinc-800 pb-2">
+<span class="material-icons text-primary mr-3 text-2xl">brush</span>
+<h2 class="text-2xl font-bold text-gray-900 dark:text-white">Artisan Information</h2>
+</div>
+<div class="space-y-4">
+<!-- Question 1 -->
+<details class="group bg-white dark:bg-zinc-900 rounded-lg border border-gray-200 dark:border-zinc-800 overflow-hidden transition-all duration-300 hover:shadow-md">
+<summary class="flex justify-between items-center cursor-pointer p-6 list-none">
+<h3 class="text-lg font-medium text-gray-900 dark:text-white pr-6">How do I know the products are authentically handmade?</h3>
+<span class="transition group-open:rotate-180">
+<span class="material-icons text-primary chevron transition-transform duration-300">expand_more</span>
+</span>
+</summary>
+<div class="px-6 pb-6 text-gray-600 dark:text-gray-300 leading-relaxed">
+<p>Authenticity is our core value. We work directly with artisan cooperatives and verified independent makers. Every product page includes a "Meet the Maker" section detailing the origin, techniques used, and the story behind the craft. We also conduct regular audits to ensuring fair trade practices.</p>
+</div>
+</details>
+<!-- Question 2 -->
+<details class="group bg-white dark:bg-zinc-900 rounded-lg border border-gray-200 dark:border-zinc-800 overflow-hidden transition-all duration-300 hover:shadow-md">
+<summary class="flex justify-between items-center cursor-pointer p-6 list-none">
+<h3 class="text-lg font-medium text-gray-900 dark:text-white pr-6">Does the money go directly to the artisans?</h3>
+<span class="transition group-open:rotate-180">
+<span class="material-icons text-primary chevron transition-transform duration-300">expand_more</span>
+</span>
+</summary>
+<div class="px-6 pb-6 text-gray-600 dark:text-gray-300 leading-relaxed">
+<p>Yes. We operate on a fair-trade model. Our pricing structure is transparent: 70% of the net price goes directly to the artisan or cooperative, while 30% covers our operational costs, marketing, and platform maintenance to help them reach a global audience.</p>
+</div>
+</details>
+</div>
+</div>
+<!-- Section: Payments -->
+<div class="mb-12">
+<div class="flex items-center mb-6 border-b border-gray-200 dark:border-zinc-800 pb-2">
+<span class="material-icons text-primary mr-3 text-2xl">credit_card</span>
+<h2 class="text-2xl font-bold text-gray-900 dark:text-white">Payments</h2>
+</div>
+<div class="space-y-4">
+<!-- Question 1 -->
+<details class="group bg-white dark:bg-zinc-900 rounded-lg border border-gray-200 dark:border-zinc-800 overflow-hidden transition-all duration-300 hover:shadow-md">
+<summary class="flex justify-between items-center cursor-pointer p-6 list-none">
+<h3 class="text-lg font-medium text-gray-900 dark:text-white pr-6">What payment methods do you accept?</h3>
+<span class="transition group-open:rotate-180">
+<span class="material-icons text-primary chevron transition-transform duration-300">expand_more</span>
+</span>
+</summary>
+<div class="px-6 pb-6 text-gray-600 dark:text-gray-300 leading-relaxed">
+<p>We accept all major credit cards (Visa, Mastercard, American Express, Discover), PayPal, Apple Pay, and Google Pay. All transactions are secure and encrypted.</p>
+</div>
+</details>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Contact CTA Footer -->
+<div class="bg-white dark:bg-zinc-900 border-t border-gray-200 dark:border-zinc-800">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
+<div class="inline-flex items-center justify-center p-3 bg-primary/10 rounded-full mb-6">
+<span class="material-icons text-primary text-3xl">support_agent</span>
+</div>
+<h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">Still need help?</h2>
+<p class="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-8 text-lg">
+                    Can't find the answer you're looking for? Our friendly support team is here to assist you with any questions about our products or your order.
+                </p>
+<div class="flex flex-col sm:flex-row justify-center gap-4">
+<button class="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary hover:bg-orange-600 transition-colors shadow-lg hover:shadow-xl">
+                        Contact Support
+                    </button>
+<button class="inline-flex items-center justify-center px-8 py-3 border border-gray-300 dark:border-gray-600 text-base font-medium rounded-md text-gray-700 dark:text-gray-200 bg-white dark:bg-zinc-800 hover:bg-gray-50 dark:hover:bg-zinc-700 transition-colors">
+                        Live Chat
+                    </button>
+</div>
+</div>
+</div>
+</main>
+<!-- Simple Footer -->
+<footer class="bg-background-dark text-white py-12">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-8">
+<div class="col-span-1 md:col-span-2">
+<span class="text-2xl font-bold text-primary tracking-tighter block mb-4">Artisan<span class="text-white">Hub</span></span>
+<p class="text-gray-400 max-w-sm text-sm">Connecting the world with authentic, handmade crafts. Every purchase supports an artisan.</p>
+</div>
+<div>
+<h4 class="font-bold mb-4 text-primary">Shop</h4>
+<ul class="space-y-2 text-sm text-gray-400">
+<li><a class="hover:text-white" href="#">New Arrivals</a></li>
+<li><a class="hover:text-white" href="#">Home Decor</a></li>
+<li><a class="hover:text-white" href="#">Jewelry</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold mb-4 text-primary">Company</h4>
+<ul class="space-y-2 text-sm text-gray-400">
+<li><a class="hover:text-white" href="#">About Us</a></li>
+<li><a class="hover:text-white" href="#">Sustainability</a></li>
+<li><a class="hover:text-white" href="#">Privacy Policy</a></li>
+</ul>
+</div>
+</div>
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 pt-8 border-t border-white/10 text-center text-sm text-gray-500">
+            © 2023 ArtisanHub Inc. All rights reserved.
+        </div>
+</footer>
+</body></html>

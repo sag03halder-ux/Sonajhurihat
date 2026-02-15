@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Track Order - Handicraft Store</title>
+<!-- Google Fonts: Work Sans -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Icons -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS with Plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ec6d13",
+                        "primary-dark": "#d15c0b",
+                        "background-light": "#f8f7f6",
+                        "background-dark": "#221810",
+                        "neutral-surface": "#ffffff",
+                        "neutral-surface-dark": "#2d241e",
+                        "text-main": "#332c26",
+                        "text-muted": "#7a7269",
+                    },
+                    fontFamily: {
+                        "display": ["Work Sans", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        @layer utilities {
+            .scrollbar-hide::-webkit-scrollbar {
+                display: none;
+            }
+            .scrollbar-hide {
+                -ms-overflow-style: none;
+                scrollbar-width: none;
+            }
+        }
+    </style>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-text-main dark:text-gray-100 min-h-screen flex flex-col transition-colors duration-300">
+<!-- Navbar -->
+<nav class="bg-neutral-surface dark:bg-neutral-surface-dark shadow-sm border-b border-gray-100 dark:border-gray-800 sticky top-0 z-50">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-20">
+<div class="flex items-center">
+<div class="flex-shrink-0 flex items-center gap-2 cursor-pointer">
+<span class="material-icons-round text-primary text-3xl">handyman</span>
+<span class="font-bold text-2xl tracking-tight">Artisan<span class="text-primary">Works</span></span>
+</div>
+<div class="hidden md:ml-10 md:flex md:space-x-8">
+<a class="border-transparent text-text-muted hover:text-primary inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-colors" href="#">Shop</a>
+<a class="border-transparent text-text-muted hover:text-primary inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-colors" href="#">Artisans</a>
+<a class="border-transparent text-text-muted hover:text-primary inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-colors" href="#">About Us</a>
+<a class="border-primary text-primary inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium" href="#">Track Order</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-text-muted hover:text-primary transition-colors">
+<span class="material-icons-round">search</span>
+</button>
+<button class="p-2 text-text-muted hover:text-primary transition-colors relative">
+<span class="material-icons-round">shopping_bag</span>
+<span class="absolute top-1 right-0 block h-2 w-2 rounded-full bg-primary ring-2 ring-white"></span>
+</button>
+<div class="h-8 w-8 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold cursor-pointer hover:bg-primary hover:text-white transition-colors">
+                        JD
+                    </div>
+</div>
+</div>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full space-y-10">
+<!-- Search / Header Section -->
+<section class="bg-neutral-surface dark:bg-neutral-surface-dark rounded-xl shadow-lg p-8 relative overflow-hidden">
+<!-- Decorative background pattern -->
+<div class="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full -mr-16 -mt-16 pointer-events-none"></div>
+<div class="absolute bottom-0 left-0 w-48 h-48 bg-primary/5 rounded-full -ml-16 -mb-16 pointer-events-none"></div>
+<div class="relative z-10 grid md:grid-cols-2 gap-8 items-center">
+<div class="space-y-6">
+<div>
+<h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">Track your handmade goods</h1>
+<p class="text-text-muted dark:text-gray-400">Enter your order details below to see the status of your shipment and when it will arrive at your doorstep.</p>
+</div>
+<form class="space-y-4 max-w-md" onsubmit="event.preventDefault();">
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<div>
+<label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1" for="order-id">Order Number</label>
+<div class="relative rounded-md shadow-sm">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="text-gray-400 text-sm">#</span>
+</div>
+<input class="focus:ring-primary focus:border-primary block w-full pl-7 sm:text-sm border-gray-300 rounded-md py-2.5 dark:bg-background-dark dark:border-gray-700 dark:text-white" id="order-id" name="order-id" placeholder="12345678" type="text" value="84920119"/>
+</div>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1" for="email">Email Address</label>
+<input class="focus:ring-primary focus:border-primary block w-full sm:text-sm border-gray-300 rounded-md py-2.5 dark:bg-background-dark dark:border-gray-700 dark:text-white" id="email" name="email" placeholder="you@example.com" type="email" value="jane.doe@example.com"/>
+</div>
+</div>
+<button class="w-full flex justify-center py-2.5 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primary hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-colors" type="submit">
+                            Track Order
+                        </button>
+</form>
+</div>
+<!-- Abstract Illustration Area -->
+<div class="hidden md:flex justify-center items-center">
+<div class="w-full h-48 bg-gradient-to-tr from-primary/10 to-primary/5 rounded-xl flex items-center justify-center relative overflow-hidden" data-alt="Abstract illustration of a package delivery process with gradient background">
+<span class="material-icons-round text-primary/40 text-9xl absolute -bottom-4 -right-4 transform rotate-12">local_shipping</span>
+<div class="text-center z-10">
+<span class="material-icons-round text-primary text-5xl mb-2">inventory_2</span>
+<p class="text-primary font-medium">Your package is on the way!</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Result Section -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Left Column: Order Details & Timeline -->
+<div class="lg:col-span-2 space-y-6">
+<!-- Order Status Card -->
+<div class="bg-neutral-surface dark:bg-neutral-surface-dark rounded-xl shadow-md p-6 border border-gray-100 dark:border-gray-800">
+<div class="flex flex-wrap justify-between items-start mb-8 gap-4">
+<div>
+<p class="text-sm text-text-muted dark:text-gray-400 font-medium uppercase tracking-wide">Estimated Delivery</p>
+<h2 class="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
+                                Friday, Oct 24th
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300">
+                                    On Time
+                                </span>
+</h2>
+<p class="text-sm mt-1 text-text-muted">Carrier: <span class="font-medium text-gray-900 dark:text-white">UPS Ground</span> • Tracking ID: <span class="font-medium text-gray-900 dark:text-white font-mono">1Z999AA10130</span></p>
+</div>
+<div class="text-right">
+<p class="text-sm text-text-muted">Order Placed</p>
+<p class="font-medium text-gray-900 dark:text-white">Oct 18, 2023</p>
+</div>
+</div>
+<!-- Progress Stepper -->
+<div class="relative my-8">
+<div aria-hidden="true" class="absolute inset-0 flex items-center">
+<div class="w-full border-t-2 border-gray-200 dark:border-gray-700"></div>
+</div>
+<div class="relative flex justify-between">
+<!-- Step 1: Ordered -->
+<div class="flex flex-col items-center group">
+<span class="h-10 w-10 rounded-full bg-primary flex items-center justify-center ring-4 ring-neutral-surface dark:ring-neutral-surface-dark z-10">
+<span class="material-icons-round text-white text-sm">check</span>
+</span>
+<span class="mt-3 text-sm font-medium text-primary dark:text-primary">Ordered</span>
+<span class="text-xs text-text-muted mt-1 hidden sm:block">Oct 18</span>
+</div>
+<!-- Step 2: Processing -->
+<div class="flex flex-col items-center group">
+<span class="h-10 w-10 rounded-full bg-primary flex items-center justify-center ring-4 ring-neutral-surface dark:ring-neutral-surface-dark z-10">
+<span class="material-icons-round text-white text-sm">check</span>
+</span>
+<span class="mt-3 text-sm font-medium text-primary dark:text-primary">Processing</span>
+<span class="text-xs text-text-muted mt-1 hidden sm:block">Oct 19</span>
+</div>
+<!-- Step 3: Shipped -->
+<div class="flex flex-col items-center group">
+<span class="h-10 w-10 rounded-full bg-primary flex items-center justify-center ring-4 ring-neutral-surface dark:ring-neutral-surface-dark z-10">
+<span class="material-icons-round text-white text-sm">local_shipping</span>
+</span>
+<span class="mt-3 text-sm font-medium text-primary dark:text-primary">Shipped</span>
+<span class="text-xs text-text-muted mt-1 hidden sm:block">Oct 20</span>
+</div>
+<!-- Step 4: Out for Delivery (Current) -->
+<div class="flex flex-col items-center group relative">
+<div class="absolute -top-12 opacity-0 group-hover:opacity-100 transition-opacity bg-gray-900 text-white text-xs rounded py-1 px-2 mb-2 whitespace-nowrap z-20">
+                                    Today at 8:30 AM
+                                    <div class="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-gray-900 rotate-45"></div>
+</div>
+<span class="h-10 w-10 rounded-full bg-white dark:bg-neutral-surface-dark border-2 border-primary flex items-center justify-center ring-4 ring-neutral-surface dark:ring-neutral-surface-dark z-10 animate-pulse">
+<span class="h-3 w-3 bg-primary rounded-full"></span>
+</span>
+<span class="mt-3 text-sm font-bold text-gray-900 dark:text-white">Out for Delivery</span>
+<span class="text-xs text-text-muted mt-1 hidden sm:block">Today</span>
+</div>
+<!-- Step 5: Delivered -->
+<div class="flex flex-col items-center group">
+<span class="h-10 w-10 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center ring-4 ring-neutral-surface dark:ring-neutral-surface-dark z-10">
+<span class="material-icons-round text-gray-400 dark:text-gray-500 text-sm">home</span>
+</span>
+<span class="mt-3 text-sm font-medium text-gray-500 dark:text-gray-400">Delivered</span>
+<span class="text-xs text-text-muted mt-1 hidden sm:block">--</span>
+</div>
+</div>
+<!-- Active Progress Bar Line Overlay -->
+<div aria-hidden="true" class="absolute inset-0 flex items-center pointer-events-none">
+<div class="w-[75%] border-t-2 border-primary"></div>
+</div>
+</div>
+<!-- Items in Shipment -->
+<div class="mt-8 pt-8 border-t border-gray-100 dark:border-gray-800">
+<h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Items in this shipment</h3>
+<div class="flex gap-4 overflow-x-auto scrollbar-hide pb-2">
+<!-- Item 1 -->
+<div class="flex-shrink-0 w-64 group bg-background-light dark:bg-background-dark p-3 rounded-lg flex items-center gap-4 border border-transparent hover:border-gray-200 dark:hover:border-gray-700 transition-colors cursor-pointer">
+<div class="h-16 w-16 bg-white dark:bg-gray-700 rounded-md overflow-hidden flex-shrink-0">
+<img alt="Handmade ceramic vase on a wooden table" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" data-alt="Handmade ceramic vase" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-03pwgt-2JlKbPO0ZYcprsiMFueLqR0ATrvd5dWFikNHJh4MlObe8g0uoG82r8JFckEQRc48ZJI141h_pxu0moUJVTKpdbFOri8zAYFLasF_dWM8mT1wtMj0Lb8fmJzCeBgoCfUVUrwP8BjZJspMNu-eyIoSh6_hxIcueW1Ntd0kEXKLh2LjJrFCeT375044eHWdqe3mrbbTHeK-FgLS_0fUcdCi1SDe70Df6hH_yQ738lpu2HC96Lfuo4AYMDY12-jEOeBZ1x5WP"/>
+</div>
+<div class="min-w-0">
+<p class="text-sm font-medium text-gray-900 dark:text-white truncate">Artisan Ceramic Vase</p>
+<p class="text-xs text-text-muted">Qnty: 1 • Earth Tone</p>
+<p class="text-xs font-semibold text-primary mt-1">$45.00</p>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="flex-shrink-0 w-64 group bg-background-light dark:bg-background-dark p-3 rounded-lg flex items-center gap-4 border border-transparent hover:border-gray-200 dark:hover:border-gray-700 transition-colors cursor-pointer">
+<div class="h-16 w-16 bg-white dark:bg-gray-700 rounded-md overflow-hidden flex-shrink-0">
+<img alt="Woven wool blanket folded neatly" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" data-alt="Handwoven wool blanket" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAlnbSEoxZzaYAOOKT9Er7zOhrdAlLaKIO_iaE505LsISxSsQkaRxza7nzX_VnxSCVfwm4WhYvUWK1f77L4TAPjnkuPt2KKym_jrQkOHC1xgUH26h8PLUlBhPa01FfKJRjBapBJ4rivi_QDz1KwWNhKjef6mI2a084f6oZ17g7v8fUKEfXcaAn5wWvn5f0nucIyWJZh6kKqVroVDqtxDpNqCMob64PpUN9THPf44axefickJJfPKKFKRgYrlDczoOTl_qV8Bu1ckKkF"/>
+</div>
+<div class="min-w-0">
+<p class="text-sm font-medium text-gray-900 dark:text-white truncate">Handwoven Wool Throw</p>
+<p class="text-xs text-text-muted">Qnty: 1 • Cream</p>
+<p class="text-xs font-semibold text-primary mt-1">$120.00</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Shipping Updates List -->
+<div class="bg-neutral-surface dark:bg-neutral-surface-dark rounded-xl shadow-md p-6 border border-gray-100 dark:border-gray-800">
+<h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-6">Shipment Activity</h3>
+<div class="flow-root">
+<ul class="-mb-8" role="list">
+<!-- Update 1 -->
+<li>
+<div class="relative pb-8">
+<span aria-hidden="true" class="absolute top-4 left-4 -ml-px h-full w-0.5 bg-gray-200 dark:bg-gray-700"></span>
+<div class="relative flex space-x-3">
+<div>
+<span class="h-8 w-8 rounded-full bg-primary flex items-center justify-center ring-8 ring-white dark:ring-neutral-surface-dark">
+<span class="material-icons-round text-white text-sm">local_shipping</span>
+</span>
+</div>
+<div class="min-w-0 flex-1 pt-1.5 flex justify-between space-x-4">
+<div>
+<p class="text-sm font-medium text-gray-900 dark:text-white">Out for delivery</p>
+<p class="text-sm text-text-muted">The package is out for delivery in your area.</p>
+</div>
+<div class="text-right text-sm whitespace-nowrap text-text-muted">
+<time datetime="2023-10-24">Today 8:30 AM</time>
+<p class="text-xs">Portland, OR</p>
+</div>
+</div>
+</div>
+</div>
+</li>
+<!-- Update 2 -->
+<li>
+<div class="relative pb-8">
+<span aria-hidden="true" class="absolute top-4 left-4 -ml-px h-full w-0.5 bg-gray-200 dark:bg-gray-700"></span>
+<div class="relative flex space-x-3">
+<div>
+<span class="h-8 w-8 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center ring-8 ring-white dark:ring-neutral-surface-dark">
+<span class="material-icons-round text-gray-500 dark:text-gray-400 text-sm">storefront</span>
+</span>
+</div>
+<div class="min-w-0 flex-1 pt-1.5 flex justify-between space-x-4">
+<div>
+<p class="text-sm font-medium text-gray-900 dark:text-white">Arrived at local facility</p>
+</div>
+<div class="text-right text-sm whitespace-nowrap text-text-muted">
+<time datetime="2023-10-23">Oct 23, 6:00 PM</time>
+<p class="text-xs">Portland, OR</p>
+</div>
+</div>
+</div>
+</div>
+</li>
+<!-- Update 3 -->
+<li>
+<div class="relative pb-8">
+<span aria-hidden="true" class="absolute top-4 left-4 -ml-px h-full w-0.5 bg-gray-200 dark:bg-gray-700"></span>
+<div class="relative flex space-x-3">
+<div>
+<span class="h-8 w-8 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center ring-8 ring-white dark:ring-neutral-surface-dark">
+<span class="material-icons-round text-gray-500 dark:text-gray-400 text-sm">flight_takeoff</span>
+</span>
+</div>
+<div class="min-w-0 flex-1 pt-1.5 flex justify-between space-x-4">
+<div>
+<p class="text-sm font-medium text-gray-900 dark:text-white">Departed from hub</p>
+</div>
+<div class="text-right text-sm whitespace-nowrap text-text-muted">
+<time datetime="2023-10-22">Oct 22, 9:15 AM</time>
+<p class="text-xs">Denver, CO</p>
+</div>
+</div>
+</div>
+</div>
+</li>
+<!-- Update 4 -->
+<li>
+<div class="relative">
+<div class="relative flex space-x-3">
+<div>
+<span class="h-8 w-8 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center ring-8 ring-white dark:ring-neutral-surface-dark">
+<span class="material-icons-round text-gray-500 dark:text-gray-400 text-sm">inventory</span>
+</span>
+</div>
+<div class="min-w-0 flex-1 pt-1.5 flex justify-between space-x-4">
+<div>
+<p class="text-sm font-medium text-gray-900 dark:text-white">Label Created</p>
+<p class="text-sm text-text-muted">The shipper has created a label for this shipment.</p>
+</div>
+<div class="text-right text-sm whitespace-nowrap text-text-muted">
+<time datetime="2023-10-18">Oct 18, 2:30 PM</time>
+<p class="text-xs">Austin, TX</p>
+</div>
+</div>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<!-- Right Column: Map & Support -->
+<div class="space-y-6">
+<!-- Map Card -->
+<div class="bg-neutral-surface dark:bg-neutral-surface-dark rounded-xl shadow-md p-1 border border-gray-100 dark:border-gray-800 h-96 lg:h-[28rem] flex flex-col">
+<div class="relative flex-grow rounded-lg overflow-hidden bg-gray-200">
+<!-- Simulated Map Image -->
+<div class="absolute inset-0 bg-cover bg-center" data-alt="Map view of city streets showing delivery route" data-location="Portland" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuATETQrD2fi66rqlIhAnYpDiAcNMl_s2lcXvu0AKkK_fiveFg4dcB6SkRaz1qNM7k85-2RhY5Ma9d92ryPFpKJAgD14duAhmoCljPq9CXDzU8GfExOGTN2dk88cbThDD_X9gcbasSRyIbZNebcuXVzpF_V3x2qGkVisY02HYBM7dzCuQk2vGfGwW-EY6v0aJgmpL5en_N9Aj8NupAssNL_HIkK6nJaZKRWyE2Myi22ojM2XGrq6xT8-K2-6DKX0ava8aJl2g_ypJ5D8'); opacity: 0.9;"></div>
+<div class="absolute inset-0 bg-primary/10 mix-blend-multiply"></div>
+<!-- Simulated Map UI Elements -->
+<div class="absolute top-4 right-4 bg-white dark:bg-neutral-surface-dark p-2 rounded shadow-lg flex flex-col gap-2">
+<button class="text-gray-500 hover:text-primary"><span class="material-icons-round">add</span></button>
+<div class="h-px bg-gray-200 dark:bg-gray-700"></div>
+<button class="text-gray-500 hover:text-primary"><span class="material-icons-round">remove</span></button>
+</div>
+<!-- Map Pin -->
+<div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+<div class="relative">
+<span class="h-4 w-4 bg-primary rounded-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 animate-ping"></span>
+<span class="material-icons-round text-primary text-4xl drop-shadow-md">location_on</span>
+</div>
+<div class="bg-white dark:bg-neutral-surface-dark px-3 py-1 rounded shadow-lg absolute top-8 left-1/2 transform -translate-x-1/2 whitespace-nowrap">
+<p class="text-xs font-bold text-gray-900 dark:text-white">Delivery Truck</p>
+<p class="text-[10px] text-text-muted">4 stops away</p>
+</div>
+</div>
+</div>
+<div class="p-4 bg-neutral-surface dark:bg-neutral-surface-dark rounded-b-lg">
+<div class="flex items-center gap-3">
+<div class="p-2 bg-background-light dark:bg-background-dark rounded-full">
+<span class="material-icons-round text-primary">navigation</span>
+</div>
+<div>
+<p class="text-sm font-semibold text-gray-900 dark:text-white">Destination</p>
+<p class="text-sm text-text-muted">123 Maple Street, Portland, OR 97205</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Support Card -->
+<div class="bg-primary/5 rounded-xl border border-primary/20 p-6">
+<h3 class="text-lg font-semibold text-primary mb-2">Need help?</h3>
+<p class="text-sm text-text-muted mb-4">Questions about your order? Our artisans are here to help you.</p>
+<div class="flex flex-col gap-2">
+<a class="flex items-center gap-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-primary transition-colors p-2 bg-white dark:bg-neutral-surface-dark rounded border border-gray-200 dark:border-gray-700 shadow-sm" href="#">
+<span class="material-icons-round text-primary text-sm">chat_bubble_outline</span>
+                            Live Chat
+                        </a>
+<a class="flex items-center gap-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-primary transition-colors p-2 bg-white dark:bg-neutral-surface-dark rounded border border-gray-200 dark:border-gray-700 shadow-sm" href="#">
+<span class="material-icons-round text-primary text-sm">help_outline</span>
+                            Visit Help Center
+                        </a>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-white dark:bg-neutral-surface-dark border-t border-gray-100 dark:border-gray-800 mt-auto">
+<div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
+<div class="md:flex md:items-center md:justify-between">
+<div class="flex justify-center space-x-6 md:order-2">
+<a class="text-gray-400 hover:text-gray-500" href="#">
+<span class="sr-only">Facebook</span>
+<svg aria-hidden="true" class="h-6 w-6" fill="currentColor" viewbox="0 0 24 24">
+<path clip-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" fill-rule="evenodd"></path>
+</svg>
+</a>
+<a class="text-gray-400 hover:text-gray-500" href="#">
+<span class="sr-only">Instagram</span>
+<svg aria-hidden="true" class="h-6 w-6" fill="currentColor" viewbox="0 0 24 24">
+<path clip-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772 4.902 4.902 0 011.772-1.153c.636-.247 1.363-.416 2.427-.465C9.673 2.013 10.03 2 12.48 2h-.165zm0 2h.165c2.404 0 2.716.01 3.734.057 1.01.046 1.56.23 1.936.376.5.195.856.425 1.23.8.375.374.605.73.8 1.229.146.376.33.926.376 1.936.047 1.018.057 1.33.057 3.734v.165c0 2.404-.01 2.716-.057 3.734-.046 1.01-.23 1.56-.376 1.936-.195.5-.425.856-.8 1.23-.374.375-.73.605-1.229.8-.376.146-.926.33-1.936.376-1.018.047-1.33.057-3.734.057h-.165c-2.404 0-2.716-.01-3.734-.057-1.01-.046-1.56-.23-1.936-.376-.5-.195-.856-.425-1.23-.8-.375-.374-.605-.73-.8-1.229-.146-.376-.33-.926-.376-1.936-.047-1.018-.057-1.33-.057-3.734v-.165c0-2.404.01-2.716.057-3.734.046-1.01.23-1.56.376-1.936.195-.5.425.856.8-1.23.374-.375.73-.605 1.229-.8.376-.146.926-.33 1.936-.376 1.018-.047 1.33-.057 3.734-.057zm0 4.5a3.5 3.5 0 110 7 3.5 3.5 0 010-7zm0 1.9a1.6 1.6 0 100 3.2 1.6 1.6 0 000-3.2zm5.83-3.67a1.05 1.05 0 110 2.1 1.05 1.05 0 010-2.1z" fill-rule="evenodd"></path>
+</svg>
+</a>
+</div>
+<div class="mt-8 md:mt-0 md:order-1">
+<p class="text-center text-sm text-gray-400">© 2023 Artisan Works, Inc. All rights reserved.</p>
+</div>
+</div>
+</div>
+</footer>
+</body></html>
